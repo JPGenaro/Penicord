@@ -4,33 +4,33 @@ const Services = () => {
   const services = [
     {
       icon: <FaOilCan className="text-3xl text-red-600" />,
-      title: "Cambio de Aceite",
-      description: "Servicio completo de cambio de aceite y filtros con productos de primera calidad."
+      title: "Cambio de Aceite y Filtros",
+      description: "Servicio completo de cambio de aceite y filtros de primera calidad para un óptimo rendimiento."
     },
     {
-      icon: <FaCog className="text-3xl text-red-600" />,
-      title: "Reparación de Motor",
-      description: "Diagnóstico y reparación especializada de motores de todas las marcas."
+      icon: <FaCarBattery className="text-3xl text-red-600" />,
+      title: "Electricidad del Automotor",
+      description: "Reparación e instalación eléctrica para vehículos y camiones, incluyendo arranques y alternadores."
     },
     {
-      icon: <FaCar className="text-3xl text-red-600" />,
-      title: "Alineación y Balanceo",
-      description: "Servicio profesional de alineación, balanceo y rotación de neumáticos."
+      icon: <FaExclamationTriangle className="text-3xl text-red-600" />,
+      title: "Sistemas de Frenos",
+      description: "Revisión y reparación completa del sistema de frenos para garantizar tu seguridad."
     },
     {
       icon: <FaTools className="text-3xl text-red-600" />,
       title: "Mecánica General",
-      description: "Reparaciones generales y mantenimiento preventivo para tu vehículo."
+      description: "Mantenimiento preventivo y reparaciones generales para mantener tu vehículo en perfectas condiciones."
     },
     {
-      icon: <FaExclamationTriangle className="text-3xl text-red-600" />,
-      title: "Frenos",
-      description: "Revisión y reparación completa del sistema de frenos de tu automóvil."
+      icon: <FaCog className="text-3xl text-red-600" />,
+      title: "Reparación de Motor",
+      description: "Diagnóstico y reparación especializada de motores de todas las marcas y modelos."
     },
     {
-      icon: <FaCarBattery className="text-3xl text-red-600" />,
-      title: "Sistema Eléctrico",
-      description: "Diagnóstico y reparación de problemas eléctricos y electrónicos."
+      icon: <FaCar className="text-3xl text-red-600" />,
+      title: "Servicios Electromecánicos",
+      description: "Soluciones integrales para fallas complejas en los sistemas de tu vehículo."
     }
   ];
 
@@ -40,7 +40,7 @@ const Services = () => {
         <div className="text-center mb-16">
           <h2 className="text-4xl font-bold text-gray-800 mb-4">Nuestros Servicios</h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Ofrecemos servicios mecánicos completos con los más altos estándares de calidad
+            Ofrecemos servicios mecánicos y electromecánicos con un enfoque en la calidad y la experiencia.
           </p>
         </div>
 
@@ -58,7 +58,7 @@ const Services = () => {
 
         <div className="text-center mt-12">
           <a
-            href="https://wa.me/5493512345678"
+            href="https://wa.me/5493512033152"
             className="inline-flex items-center bg-red-600 hover:bg-red-700 text-white px-8 py-4 rounded-full text-lg font-semibold transition-all duration-300"
           >
             Consultar por todos los servicios

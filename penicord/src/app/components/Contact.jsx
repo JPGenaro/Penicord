@@ -21,7 +21,8 @@ const Contact = () => {
                 </div>
                 <div>
                   <h4 className="font-semibold">Dirección</h4>
-                  <p className="text-gray-300">Av. Siempre Viva 742, Springfield</p>
+                  <p className="text-gray-300">Alejandro Aguado 1017, Barrio Talleres Oeste</p>
+                  <p className="text-gray-300">Córdoba, Argentina</p>
                 </div>
               </div>
 
@@ -31,7 +32,7 @@ const Contact = () => {
                 </div>
                 <div>
                   <h4 className="font-semibold">Teléfono</h4>
-                  <p className="text-gray-300">+54 351 234-5678</p>
+                  <p className="text-gray-300">+54 351 203-3152</p>
                 </div>
               </div>
 
@@ -41,7 +42,7 @@ const Contact = () => {
                 </div>
                 <div>
                   <h4 className="font-semibold">WhatsApp</h4>
-                  <p className="text-gray-300">+54 351 234-5678</p>
+                  <p className="text-gray-300">+54 351 203-3152</p>
                 </div>
               </div>
 
@@ -51,8 +52,8 @@ const Contact = () => {
                 </div>
                 <div>
                   <h4 className="font-semibold">Horarios</h4>
-                  <p className="text-gray-300">Lunes a Viernes: 8:00 - 18:00</p>
-                  <p className="text-gray-300">Sábados: 8:00 - 13:00</p>
+                  <p className="text-gray-300">Lunes a Viernes: 9:00 - 13:00 y 15:30 - 19:00</p>
+                  <p className="text-gray-300">Sábados y Domingos: Cerrado</p>
                 </div>
               </div>
             </div>
@@ -106,7 +107,7 @@ const Contact = () => {
             <div className="mt-6 text-center">
               <p className="text-gray-400">O contáctanos directamente por</p>
               <a
-                href="https://wa.me/5493512345678"
+                href="https://wa.me/5493512033152"
                 className="inline-flex items-center bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-lg mt-2"
               >
                 <FaWhatsapp className="mr-2" />

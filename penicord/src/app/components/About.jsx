@@ -3,16 +3,16 @@ import Image from 'next/image';
 const About = () => {
   const features = [
     {
-      title: "Personal Calificado",
-      description: "Mecánicos certificados con años de experiencia"
+      title: "Trayectoria",
+      description: "Operando con éxito desde 1960 en la ciudad de Córdoba."
     },
     {
-      title: "Calidad Garantizada",
-      description: "Trabajos con garantía y repuestos originales"
+      title: "Especialistas",
+      description: "Expertos en electromecánica y electricidad del automotor."
     },
     {
-      title: "Servicio Rápido",
-      description: "Soluciones eficientes en tiempos récord"
+      title: "Equipo Calificado",
+      description: "Con formación técnica en Renault y electricidad avanzada."
     }
   ];
 
@@ -36,22 +36,21 @@ const About = () => {
           <div>
             <h2 className="text-4xl font-bold text-gray-800 mb-6">Sobre Penicord</h2>
             <p className="text-lg text-gray-600 mb-6">
-              Nuestro compromiso es brindar un servicio 
-              confiable y de calidad.
+              Somos un taller mecánico especializado en **electromecánica** con una trayectoria desde **1960** en Córdoba, Argentina. Nos dedicamos a ofrecer un servicio honesto, rápido y confiable, centrado en la calidad y la satisfacción del cliente.
             </p>
             
             <div className="space-y-4 mb-8">
               <div className="flex items-center">
                 <span className="w-4 h-4 bg-red-600 rounded-full mr-3"></span>
-                <span className="text-gray-700">Atención personalizada</span>
+                <span className="text-gray-700">Trabajo honesto y transparente</span>
               </div>
               <div className="flex items-center">
                 <span className="w-4 h-4 bg-red-600 rounded-full mr-3"></span>
-                <span className="text-gray-700">Tecnología de última generación</span>
+                <span className="text-gray-700">Reparaciones rápidas y fiables</span>
               </div>
               <div className="flex items-center">
                 <span className="w-4 h-4 bg-red-600 rounded-full mr-3"></span>
-                <span className="text-gray-700">Precios competitivos</span>
+                <span className="text-gray-700">Atendido por sus propios dueños</span>
               </div>
             </div>
 
