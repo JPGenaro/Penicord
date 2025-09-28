@@ -1,5 +1,7 @@
 import Image from 'next/image';
 import { FaWhatsapp, FaTools } from 'react-icons/fa';
+// Importamos el nuevo componente de carrusel
+import HeroImageCarousel from './HeroImageCarousel'; 
 
 const Hero = () => {
   return (
@@ -40,16 +42,12 @@ const Hero = () => {
             </div>
           </div>
 
-          {/* Image */}
-          <div className="relative h-96 lg:h-full">
-            <div className="absolute inset-0 bg-red-600/10 rounded-3xl"></div>
-            <div className="relative h-full bg-gray-700 rounded-3xl flex items-center justify-center">
-              <div className="text-center p-8">
-                <FaTools className="text-6xl text-red-400 mb-4 mx-auto" />
-                <p className="text-gray-300">Imagen del taller Penicord</p>
-                <p className="text-sm text-gray-400 mt-2">(Reemplazar con imagen real)</p>
-              </div>
-            </div>
+          {/* Image/Carousel (Right Column) */}
+          {/* Mantenemos el contenedor que le da altura al carrusel */}
+          <div className="relative h-96 lg:h-full"> 
+            {/* 1. Eliminamos el div de fondo rojo/10 que tenía tu código original */}
+            {/* 2. Reemplazamos el placeholder del ícono y texto por el carrusel */}
+            <HeroImageCarousel />
           </div>
         </div>
       </div>
