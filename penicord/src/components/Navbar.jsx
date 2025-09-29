@@ -19,11 +19,11 @@ const Navbar = () => {
 
           {/* Desktop Menu */}
           <div className="hidden md:flex items-center space-x-8">
-            <a href="#inicio" className="text-gray-700 hover:text-red-600 font-medium">Inicio</a>
-            <a href="#servicios" className="text-gray-700 hover:text-red-600 font-medium">Servicios</a>
+            <a href="/#inicio" className="text-gray-700 hover:text-red-600 font-medium">Inicio</a>
+            <a href="/#servicios" className="text-gray-700 hover:text-red-600 font-medium">Servicios</a>
             <a href="/nosotros" className="text-gray-700 hover:text-red-600 font-medium">Nosotros</a>
-            <a href="#galeria" className="text-gray-700 hover:text-red-600 font-medium">Galería</a>
-            <a href="#contacto" className="text-gray-700 hover:text-red-600 font-medium">Contacto</a>
+            <a href="/#galeria" className="text-gray-700 hover:text-red-600 font-medium">Galería</a>
+            <a href="/#contacto" className="text-gray-700 hover:text-red-600 font-medium">Contacto</a>
             
             <a
               href="https://wa.me/5493512033152"
