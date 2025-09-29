@@ -31,7 +31,7 @@ const Footer = () => {
 
           {/* Contact */}
           <div>
-            <h4 className="text-lg font-semibold mb-4">Contacto</h4>
+            <h4 className="text-lg font-semibold mb-4">Ubicacion y contacto</h4>
             <div className="space-y-2 text-gray-400">
               <p>Alejandro Aguado 1017</p>
               <p>Barrio Talleres Oeste, Córdoba</p>
