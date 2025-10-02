@@ -5,12 +5,12 @@ import Autoplay from 'embla-carousel-autoplay';
 import Image from 'next/image';
 
 const images = [
-  '/entrada1.jpg',
-  '/entrada2.jpg',
-  '/herramientas1.jpg', 
-  '/interior1.jpg',
-  '/interior2.jpg',
-  '/interior3.jpg',
+  '/entrada1.webp',
+  '/entrada2.webp',
+  '/herramientas1.webp', 
+  '/interior1.webp',
+  '/interior2.webp',
+  '/interior3.webp',
 ];
 
 const HeroImageCarousel = () => {
