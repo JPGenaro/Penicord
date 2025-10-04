@@ -2,7 +2,7 @@
 import Navbar from '../../components/Navbar';
 import Footer from '../../components/Footer';
 import Image from 'next/image';
-import { motion } from 'framer-motion';
+import { motion, Variants } from 'framer-motion';
 
 // --- Data de Ejemplos para la Galería ---
 const historiasTrabajos = [
@@ -44,11 +44,17 @@ const containerVariants = {
   }
 };
 
-const itemVariants = {
+const itemVariants: Variants = {
   hidden: { y: 30, opacity: 0 },
-  visible: { y: 0, opacity: 1, transition: { duration: 0.6, ease: "easeInOut" } }
+  visible: { 
+    y: 0, 
+    opacity: 1, 
+    transition: { 
+      duration: 0.6, 
+      ease: [0.42, 0, 0.58, 1] 
+    } 
+  }
 };
-
 
 const GaleriaPage = () => {
 
