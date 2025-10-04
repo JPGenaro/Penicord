@@ -10,7 +10,7 @@ const historiasTrabajos = [
     id: 1,
     titulo: "El Clásico Renault 12: Cambio de Instalación Eléctrica Completa",
     descripcion: "Un cliente nos trajo su amado R-12, con un sistema eléctrico muy deteriorado. Desmontamos toda la instalación y colocamos un nuevo cableado y fusibles, devolviéndole la vida a cada luz e instrumento. Un trabajo de precisión que nos tomó 3 días.",
-    imagenUrl: '/entrada1.webp', 
+    imagenUrl: '/entrada1.webp',
     fecha: 'Marzo 2024',
     servicios: ["Electricidad del Automotor", "Diagnóstico"]
   },
@@ -30,9 +30,9 @@ const historiasTrabajos = [
     fecha: 'Enero 2024',
     servicios: ["Puesta a Punto", "Mecánica General"]
   }
-  // Meter historias aca
 ];
 
+// --- Framer Motion Variants ---
 const containerVariants = {
   hidden: { opacity: 0 },
   visible: {
@@ -46,7 +46,7 @@ const containerVariants = {
 
 const itemVariants = {
   hidden: { y: 30, opacity: 0 },
-  visible: { y: 0, opacity: 1, transition: { duration: 0.6, ease: [0.33, 1, 0.68, 1] } } 
+  visible: { y: 0, opacity: 1, transition: { duration: 0.6, ease: "easeInOut" } }
 };
 
 
@@ -54,7 +54,7 @@ const GaleriaPage = () => {
 
   return (
     <main className="min-h-screen bg-gray-50">
-      <Navbar />
+      <Navbar /> 
       
       <section id="galeria-historias" className="pt-32 pb-20">
         <div className="container mx-auto px-4">
@@ -84,7 +84,7 @@ const GaleriaPage = () => {
             {historiasTrabajos.map((historia) => (
               <motion.div
                 key={historia.id}
-                variants={itemVariants} 
+                variants={itemVariants}
                 className="bg-white rounded-2xl shadow-xl overflow-hidden transform hover:scale-[1.02] transition-transform duration-500 ease-out border-t-4 border-red-600"
               >
                 {/* Imagen del Trabajo */}
