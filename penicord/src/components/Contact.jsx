@@ -63,19 +63,11 @@ const Contact = () => {
                 </div>
                 <div>
                   <h4 className="font-semibold">Teléfono</h4>
-                  <p className="text-gray-300">+54 351 203-3152</p>
+                  <p className="text-gray-300">+54 351 890-0167</p>
                 </div>
               </div>
 
-              <div className="flex items-center">
-                <div className="bg-red-600 p-3 rounded-lg mr-4">
-                  <FaWhatsapp className="text-xl" />
-                </div>
-                <div>
-                  <h4 className="font-semibold">WhatsApp</h4>
-                  <p className="text-gray-300">+54 351 203-3152</p>
-                </div>
-              </div>
+             
 
               <div className="flex items-center">
                 <div className="bg-red-600 p-3 rounded-lg mr-4">
@@ -83,7 +75,7 @@ const Contact = () => {
                 </div>
                 <div>
                   <h4 className="font-semibold">Horarios</h4>
-                  <p className="text-gray-300">Lunes a Viernes: 9:00 - 13:00 y 15:30 - 19:00</p>
+                  <p className="text-gray-300">Lunes a Viernes: 9:00 a 18:00</p>
                   <p className="text-gray-300">Sábados y Domingos: Cerrado</p>
                 </div>
               </div>

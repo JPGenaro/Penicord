@@ -35,7 +35,7 @@ const Footer = () => {
             <div className="space-y-2 text-gray-400">
               <p>Alejandro Aguado 1017</p>
               <p>Barrio Talleres Oeste, Córdoba</p>
-              <p>+54 351 203-3152</p>
+              
             </div>
           </div>
         </div>

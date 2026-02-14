@@ -65,4 +65,4 @@ Si quieres contribuir, abre un issue o un pull request en el repositorio con una
 
 ---
 
-¿Quieres que agregue ejemplos reales de screenshots desde `public/screenshots/` ahora o dejo los placeholders para que subas las imágenes?
+¿Quieres que intente de nuevo sobrescribir `README.md` directamente o prefieres que renombre `README_NEW.md` a `README.md` ahora?

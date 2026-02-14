@@ -49,7 +49,7 @@ const Hero = () => {
             <motion.div variants={itemVariants} className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
               {/* Los botones son parte del mismo itemVariants */}
               <a
-                href="https://wa.me/5493512033152"
+                href="https://wa.me/543518900167"
                 className="bg-red-600 hover:bg-red-700 text-white px-8 py-4 rounded-full text-lg font-semibold flex items-center justify-center gap-2 transition-all duration-300"
               >
                 <FaWhatsapp className="text-xl" />

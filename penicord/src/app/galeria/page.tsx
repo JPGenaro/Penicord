@@ -141,7 +141,7 @@ const GaleriaPage = () => {
               ¿Tu vehículo necesita una historia de éxito como estas?
             </p>
             <a
-              href="https://wa.me/5493512033152"
+              href="https://wa.me/543518900167"
               className="inline-flex items-center bg-red-600 hover:bg-red-700 text-white px-8 py-4 rounded-full text-lg font-semibold transition-all duration-300 shadow-lg"
             >
               Agenda tu turno por WhatsApp
