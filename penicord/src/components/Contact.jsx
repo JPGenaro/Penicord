@@ -2,6 +2,15 @@
 import { FaPhone, FaWhatsapp, FaMapMarkerAlt, FaClock } from 'react-icons/fa';
 import { motion } from 'framer-motion';
 
+/**
+ * Contact - sección de contacto y mapa.
+ *
+ * Muestra información de contacto (dirección, teléfono, horarios)
+ * y un iframe con la ubicación en Google Maps.
+ *
+ * @component
+ * @returns {JSX.Element} Sección de contacto completa.
+ */
 const Contact = () => {
   const mapAddress = "Alejandro Aguado 1017, Barrio Talleres Oeste, Córdoba, Argentina";
   

@@ -2,6 +2,13 @@
 import { useState } from 'react';
 import { FaPhone, FaBars, FaTimes, FaWhatsapp } from 'react-icons/fa';
 
+/**
+ * Navbar - barra de navegación principal.
+ *
+ * Maneja el estado de menú móvil y renderiza enlaces y botones de acción.
+ * @component
+ * @returns {JSX.Element} Barra de navegación fija en la parte superior.
+ */
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
 

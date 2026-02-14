@@ -3,6 +3,15 @@ import { FaWhatsapp, FaTools } from 'react-icons/fa';
 import HeroImageCarousel from './HeroImageCarousel'; 
 import { motion } from 'framer-motion'; 
 
+/**
+ * Hero - componente principal de la cabecera.
+ *
+ * Incluye título, descripción y llamadas a la acción, además
+ * del carrusel de imágenes `HeroImageCarousel`.
+ *
+ * @component
+ * @returns {JSX.Element} Sección Hero para la página principal.
+ */
 const Hero = () => {
   const containerVariants = {
     hidden: { opacity: 0 },

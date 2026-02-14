@@ -13,6 +13,13 @@ const images = [
   '/interior3.webp',
 ];
 
+/**
+ * HeroImageCarousel - carrusel de imágenes para la sección Hero.
+ *
+ * Utiliza `embla-carousel-react` con autoplay para rotar imágenes.
+ * @component
+ * @returns {JSX.Element} Carrusel de imágenes responsive.
+ */
 const HeroImageCarousel = () => {
   const [emblaRef, emblaApi] = useEmblaCarousel({ 
     loop: true,

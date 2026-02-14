@@ -2,6 +2,14 @@
 import { FaCog, FaOilCan, FaCar, FaTools, FaExclamationTriangle, FaCarBattery } from 'react-icons/fa';
 import { motion } from 'framer-motion';
 
+/**
+ * Services - lista de tarjetas de servicios ofrecidos.
+ *
+ * Define una colección de servicios con icono, título y descripción
+ * y las renderiza con animación mediante `framer-motion`.
+ * @component
+ * @returns {JSX.Element} Sección de servicios.
+ */
 const Services = () => {
   const services = [
     {
