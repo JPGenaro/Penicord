@@ -1,5 +1,5 @@
 'use client';
-import { FaWhatsapp, FaMapMarkerAlt, FaClock } from 'react-icons/fa';
+import { FaWhatsapp, FaMapMarkerAlt, FaClock, FaDirections, FaMapMarkedAlt } from 'react-icons/fa';
 import { motion } from 'framer-motion';
 
 /**
@@ -13,12 +13,26 @@ import { motion } from 'framer-motion';
  */
 const Contact = () => {
   const mapAddress = "Alejandro Aguado 1017, Barrio Talleres Oeste, Córdoba, Argentina";
+  const coordinates = "-31.3895,-64.2068"; // Coordenadas aproximadas de Talleres Oeste
   
   const mapEmbedUrl = `https://maps.google.com/maps?q=${encodeURIComponent(mapAddress)}&t=&z=15&ie=UTF8&iwloc=&output=embed`;
   
   const sectionVariants = {
     hidden: { opacity: 0, y: 50 },
     visible: { opacity: 1, y: 0, transition: { duration: 0.6 } }
+  };
+
+  // URLs para diferentes aplicaciones de mapas
+  const openInGoogleMaps = () => {
+    window.open(`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(mapAddress)}`, '_blank');
+  };
+
+  const openInWaze = () => {
+    window.open(`https://waze.com/ul?q=${encodeURIComponent(mapAddress)}`, '_blank');
+  };
+
+  const getDirections = () => {
+    window.open(`https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(mapAddress)}`, '_blank');
   };
 
   return (
@@ -76,6 +90,14 @@ const Contact = () => {
                 <div>
                   <h4 className="font-semibold">WhatsApp</h4>
                   <p className="text-gray-300">+54 351 890-0167</p>
+                  <a 
+                    href="https://wa.me/5493518900167"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-red-400 hover:text-red-500 text-sm mt-1 inline-block"
+                  >
+                    Enviar mensaje →
+                  </a>
                 </div>
               </div>
 
@@ -88,6 +110,27 @@ const Contact = () => {
                   <p className="text-gray-300">Lunes a Viernes: 9:00 a 18:00</p>
                   <p className="text-gray-300">Sábados y Domingos: Cerrado</p>
                 </div>
+              </div>
+            </div>
+
+            {/* Botones de navegación */}
+            <div className="mt-8 space-y-3">
+              <h4 className="text-lg font-semibold mb-4">¿Cómo llegar?</h4>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                <button
+                  onClick={getDirections}
+                  className="flex items-center justify-center gap-2 bg-blue-600 hover:bg-blue-700 text-white font-semibold px-5 py-3 rounded-xl transition-all duration-300 transform hover:scale-105 shadow-lg"
+                >
+                  <FaDirections className="text-lg" />
+                  Cómo llegar
+                </button>
+                <button
+                  onClick={openInWaze}
+                  className="flex items-center justify-center gap-2 bg-cyan-500 hover:bg-cyan-600 text-white font-semibold px-5 py-3 rounded-xl transition-all duration-300 transform hover:scale-105 shadow-lg"
+                >
+                  <FaMapMarkedAlt className="text-lg" />
+                  Abrir en Waze
+                </button>
               </div>
             </div>
           </motion.div>
@@ -112,6 +155,14 @@ const Contact = () => {
                 referrerPolicy="no-referrer-when-downgrade"
                 title="Ubicación de Penicord Taller Mecánico"
               ></iframe>
+            </div>
+            
+            {/* Referencia de ubicación */}
+            <div className="mt-6 bg-white/5 border border-white/10 p-4 rounded-xl backdrop-blur-sm">
+              <p className="text-sm text-gray-300">
+                <strong className="text-white">Referencia:</strong> Estamos en Barrio Talleres Oeste, cerca de Av. Colón. 
+                Zona céntrica de fácil acceso en transporte público o vehículo particular.
+              </p>
             </div>
           </motion.div>
         </div>

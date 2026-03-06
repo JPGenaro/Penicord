@@ -1,8 +1,10 @@
 'use client'; 
+import { useState } from 'react';
 import Navbar from '../../components/Navbar';
 import Footer from '../../components/Footer';
 import Image from 'next/image';
 import { motion, Variants } from 'framer-motion';
+import { FaFilter } from 'react-icons/fa';
 
 // --- Data de Ejemplos para la Galería ---
 const historiasTrabajos = [
@@ -28,6 +30,30 @@ const historiasTrabajos = [
     descripcion: "Trabajamos en la puesta a punto de un 'Fitito' para un coleccionista. Ajustamos el carburador y el sistema de encendido para optimizar el consumo y la respuesta del motor. Pequeños autos, grandes desafíos.",
     imagenUrl: '/interior2.webp', 
     fecha: 'Enero 2024',
+    servicios: ["Puesta a Punto", "Mecánica General"]
+  },
+  {
+    id: 4,
+    titulo: "Reparación Sistema de Frenos en Volkswagen Gol",
+    descripcion: "Reemplazo completo de pastillas, discos y líquido de frenos. El cliente reportaba ruidos y pérdida de efectividad en la frenada. Ahora frena perfectamente y con total seguridad.",
+    imagenUrl: '/entrada1.webp',
+    fecha: 'Diciembre 2023',
+    servicios: ["Sistema de Frenos", "Mecánica General"]
+  },
+  {
+    id: 5,
+    titulo: "Diagnóstico Electrónico y Scanner en Chevrolet Corsa",
+    descripcion: "El auto presentaba fallas intermitentes y se encendía la luz del motor. Realizamos diagnóstico completo con scanner, detectamos sensor de oxígeno defectuoso y lo reemplazamos. Problema resuelto.",
+    imagenUrl: '/herramientas1.webp',
+    fecha: 'Noviembre 2023',
+    servicios: ["Diagnóstico", "Electricidad del Automotor"]
+  },
+  {
+    id: 6,
+    titulo: "Service Completo 10.000 km - Peugeot 208",
+    descripcion: "Cambio de aceite, filtros (aceite, aire, habitáculo), revisión de niveles, inspección de frenos y neumáticos. Service preventivo para mantener el auto en óptimas condiciones.",
+    imagenUrl: '/interior2.webp',
+    fecha: 'Octubre 2023',
     servicios: ["Puesta a Punto", "Mecánica General"]
   }
 ];
@@ -57,6 +83,15 @@ const itemVariants: Variants = {
 };
 
 const GaleriaPage = () => {
+  const [filtroActivo, setFiltroActivo] = useState('Todos');
+
+  // Obtener categorías únicas
+  const categorias = ['Todos', ...new Set(historiasTrabajos.flatMap(trabajo => trabajo.servicios))];
+
+  // Filtrar trabajos según categoría seleccionada
+  const trabajosFiltrados = filtroActivo === 'Todos' 
+    ? historiasTrabajos 
+    : historiasTrabajos.filter(trabajo => trabajo.servicios.includes(filtroActivo));
 
   return (
     <main className="min-h-screen bg-gray-50">
@@ -75,7 +110,7 @@ const GaleriaPage = () => {
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className="text-center mb-16"
+            className="text-center mb-12"
           >
             <h1 className="text-5xl md:text-6xl font-extrabold text-gray-900 mb-4">
               Trabajos del Taller
@@ -85,15 +120,56 @@ const GaleriaPage = () => {
             </p>
           </motion.div>
 
+          {/* Sistema de Filtros */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            className="mb-12"
+          >
+            <div className="flex items-center justify-center gap-3 mb-6">
+              <FaFilter className="text-red-600 text-xl" />
+              <h3 className="text-lg font-semibold text-gray-700">Filtrar por servicio:</h3>
+            </div>
+            
+            <div className="flex flex-wrap justify-center gap-3">
+              {categorias.map((categoria) => (
+                <button
+                  key={categoria}
+                  onClick={() => setFiltroActivo(categoria)}
+                  className={`px-6 py-2.5 rounded-full font-medium transition-all duration-300 transform hover:scale-105 ${
+                    filtroActivo === categoria
+                      ? 'bg-red-600 text-white shadow-lg shadow-red-600/30'
+                      : 'bg-white text-gray-700 border border-gray-200 hover:border-red-300 hover:text-red-600'
+                  }`}
+                >
+                  {categoria}
+                </button>
+              ))}
+            </div>
+
+            {/* Contador de resultados */}
+            <motion.p
+              key={filtroActivo}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              className="text-center mt-4 text-gray-600"
+            >
+              {trabajosFiltrados.length} {trabajosFiltrados.length === 1 ? 'trabajo' : 'trabajos'} 
+              {filtroActivo !== 'Todos' && ` en "${filtroActivo}"`}
+            </motion.p>
+          </motion.div>
+
           {/* Contenedor de las Historias con Stagger */}
           <motion.div
             className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10"
             variants={containerVariants}
             initial="hidden"
             animate="visible"
+            key={filtroActivo}
             role="list"
           >
-            {historiasTrabajos.map((historia) => (
+            {trabajosFiltrados.map((historia) => (
               <motion.article
                 key={historia.id}
                 variants={itemVariants}
@@ -135,6 +211,17 @@ const GaleriaPage = () => {
               </motion.article>
             ))}
           </motion.div>
+
+          {/* Mensaje si no hay resultados */}
+          {trabajosFiltrados.length === 0 && (
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              className="text-center py-16"
+            >
+              <p className="text-xl text-gray-500">No hay trabajos en esta categoría todavía.</p>
+            </motion.div>
+          )}
 
           {/* Cierre */}
           <motion.div
