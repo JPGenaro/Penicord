@@ -13,8 +13,8 @@ const Footer = () => {
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 relative z-10">
           {/* Brand */}
-          <div>
-            <div className="flex items-center mb-4">
+          <div className="text-center md:text-left">
+            <div className="flex items-center mb-4 justify-center md:justify-start">
               <div className="bg-gradient-to-br from-red-600 to-red-700 text-white p-2.5 rounded-lg mr-3 shadow-lg shadow-red-900/30">
                 <FaTools className="text-2xl" />
               </div>
@@ -26,9 +26,9 @@ const Footer = () => {
           </div>
 
           {/* Navigation */}
-          <div>
+          <div className="text-center md:text-left">
             <h4 className="text-lg font-semibold mb-4">Navegación</h4>
-            <ul className="space-y-2 text-gray-400">
+            <ul className="space-y-2 text-gray-400 flex flex-col items-center md:items-start">
               <li>
                 <a href="/#inicio" className="hover:text-white transition-colors inline-flex items-center gap-2 group"><span className="h-0.5 w-0 bg-red-500 group-hover:w-3 transition-all" />Inicio</a>
               </li>
@@ -48,9 +48,9 @@ const Footer = () => {
           </div>
 
           {/* Services */}
-          <div>
+          <div className="text-center md:text-left">
             <h4 className="text-lg font-semibold mb-4">Servicios</h4>
-            <ul className="space-y-2 text-gray-400">
+            <ul className="space-y-2 text-gray-400 flex flex-col items-center md:items-start">
               <li className="flex items-center gap-2"><span className="h-1.5 w-1.5 rounded-full bg-red-500" />Cambio de Aceite y Filtros</li>
               <li className="flex items-center gap-2"><span className="h-1.5 w-1.5 rounded-full bg-red-500" />Electricidad del Automotor</li>
               <li className="flex items-center gap-2"><span className="h-1.5 w-1.5 rounded-full bg-red-500" />Reparación de Motor</li>
