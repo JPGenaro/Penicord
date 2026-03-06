@@ -1,5 +1,5 @@
 'use client';
-import { FaWhatsapp, FaMapMarkerAlt, FaClock, FaDirections, FaMapMarkedAlt } from 'react-icons/fa';
+import { FaWhatsapp, FaMapMarkerAlt, FaClock, FaDirections } from 'react-icons/fa';
 import { motion } from 'framer-motion';
 
 /**
@@ -22,15 +22,7 @@ const Contact = () => {
     visible: { opacity: 1, y: 0, transition: { duration: 0.6 } }
   };
 
-  // URLs para diferentes aplicaciones de mapas
-  const openInGoogleMaps = () => {
-    window.open(`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(mapAddress)}`, '_blank');
-  };
-
-  const openInWaze = () => {
-    window.open(`https://waze.com/ul?q=${encodeURIComponent(mapAddress)}`, '_blank');
-  };
-
+  // Abrir indicaciones en Google Maps
   const getDirections = () => {
     window.open(`https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(mapAddress)}`, '_blank');
   };
@@ -113,27 +105,16 @@ const Contact = () => {
               </div>
             </div>
 
-            {/* Botones de navegación */}
-            <div className="mt-8 space-y-3">
-              <h4 className="text-lg font-semibold mb-4">¿Cómo llegar?</h4>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                <button
-                  type="button"
-                  onClick={getDirections}
-                  className="flex items-center justify-center gap-2 bg-blue-600 hover:bg-blue-700 text-white font-semibold px-5 py-3 rounded-xl transition-all duration-300 transform hover:scale-105 shadow-lg"
-                >
-                  <FaDirections className="text-lg" />
-                  Cómo llegar
-                </button>
-                <button
-                  type="button"
-                  onClick={openInWaze}
-                  className="flex items-center justify-center gap-2 bg-cyan-500 hover:bg-cyan-600 text-white font-semibold px-5 py-3 rounded-xl transition-all duration-300 transform hover:scale-105 shadow-lg"
-                >
-                  <FaMapMarkedAlt className="text-lg" />
-                  Abrir en Waze
-                </button>
-              </div>
+            {/* Botón de navegación */}
+            <div className="mt-8">
+              <button
+                type="button"
+                onClick={getDirections}
+                className="w-full flex items-center justify-center gap-3 bg-blue-600 hover:bg-blue-700 text-white font-bold px-6 py-4 rounded-xl transition-all duration-300 transform hover:scale-105 shadow-xl hover:shadow-2xl"
+              >
+                <FaDirections className="text-2xl" />
+                <span className="text-lg">Cómo llegar al taller</span>
+              </button>
             </div>
           </motion.div>
 
