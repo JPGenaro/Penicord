@@ -61,7 +61,7 @@ const FAQ = () => {
       <div className="container mx-auto px-4 relative z-10">
         {/* Título */}
         <motion.div
-          initial={{ opacity: 0, y: -20 }}
+          initial={{ opacity: 1, y: 0 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 0.6 }}
@@ -80,7 +80,7 @@ const FAQ = () => {
 
         {/* Acordeón de FAQs */}
         <motion.div
-          initial={{ opacity: 0 }}
+          initial={{ opacity: 1 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true, amount: 0.2 }}
           transition={{ duration: 0.6, delay: 0.2 }}
@@ -89,7 +89,7 @@ const FAQ = () => {
           {faqs.map((faq, index) => (
             <motion.div
               key={index}
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 1, y: 0 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.4, delay: index * 0.1 }}
@@ -100,8 +100,9 @@ const FAQ = () => {
               {/* Pregunta - Botón expandible */}
               <button
                 onClick={() => toggleFAQ(index)}
-                className="w-full text-left px-6 py-5 flex items-center justify-between gap-4 hover:bg-gray-50 transition-colors duration-200"
+                className="w-full text-left px-6 py-5 flex items-center justify-between gap-4 hover:bg-red-50 transition-colors duration-200 cursor-pointer"
                 aria-expanded={activeIndex === index}
+                type="button"
               >
                 <span className="text-lg font-semibold text-gray-900 pr-8">
                   {faq.question}
@@ -111,7 +112,7 @@ const FAQ = () => {
                   transition={{ duration: 0.3 }}
                   className="flex-shrink-0"
                 >
-                  <FaChevronDown className={`text-xl ${activeIndex === index ? 'text-red-600' : 'text-gray-400'}`} />
+                  <FaChevronDown className={`text-xl transition-colors duration-200 ${activeIndex === index ? 'text-red-600' : 'text-gray-400'}`} />
                 </motion.div>
               </button>
 
@@ -141,7 +142,7 @@ const FAQ = () => {
 
         {/* Llamado a la acción */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 1, y: 0 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.4 }}

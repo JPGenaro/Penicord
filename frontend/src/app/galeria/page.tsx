@@ -60,9 +60,8 @@ const historiasTrabajos = [
 
 // --- Framer Motion Variants ---
 const containerVariants = {
-  hidden: { opacity: 0 },
+  hidden: {},
   visible: {
-    opacity: 1,
     transition: {
       staggerChildren: 0.2, 
       delayChildren: 0.3
@@ -71,15 +70,13 @@ const containerVariants = {
 };
 
 const itemVariants: Variants = {
-  hidden: { y: 30, opacity: 0 },
-  visible: { 
-    y: 0, 
-    opacity: 1, 
-    transition: { 
-      duration: 0.6, 
-      ease: [0.42, 0, 0.58, 1] 
-    } 
-  }
+    hidden: { y: 20 },
+    visible: { 
+      y: 0, 
+      transition: { 
+        duration: 0.5
+      } 
+    }
 };
 
 const GaleriaPage = () => {
@@ -106,27 +103,17 @@ const GaleriaPage = () => {
         <div className="container mx-auto px-4 relative z-10">
           
           {/* Título de la Sección */}
-          <motion.div
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            className="text-center mb-12"
-          >
+          <div className="text-center mb-12">
             <h1 className="text-5xl md:text-6xl font-extrabold text-gray-900 mb-4">
               Trabajos del Taller
             </h1>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
               Algunos trabajos recientes para que veas cómo encaramos cada reparación, con criterio y prolijidad.
             </p>
-          </motion.div>
+          </div>
 
           {/* Sistema de Filtros */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-            className="mb-12"
-          >
+          <div className="mb-12">
             <div className="flex items-center justify-center gap-3 mb-6">
               <FaFilter className="text-red-600 text-xl" />
               <h3 className="text-lg font-semibold text-gray-700">Filtrar por servicio:</h3>
@@ -149,16 +136,14 @@ const GaleriaPage = () => {
             </div>
 
             {/* Contador de resultados */}
-            <motion.p
+            <p
               key={filtroActivo}
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
               className="text-center mt-4 text-gray-600"
             >
               {trabajosFiltrados.length} {trabajosFiltrados.length === 1 ? 'trabajo' : 'trabajos'} 
               {filtroActivo !== 'Todos' && ` en "${filtroActivo}"`}
-            </motion.p>
-          </motion.div>
+            </p>
+          </div>
 
           {/* Contenedor de las Historias con Stagger */}
           <motion.div
@@ -214,26 +199,17 @@ const GaleriaPage = () => {
 
           {/* Mensaje si no hay resultados */}
           {trabajosFiltrados.length === 0 && (
-            <motion.div
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              className="text-center py-16"
-            >
+            <div className="text-center py-16">
               <p className="text-xl text-gray-500">No hay trabajos en esta categoría todavía.</p>
-            </motion.div>
+            </div>
           )}
 
           {/* Cierre */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.8 }}
-            className="text-center mt-16 bg-white border border-gray-100 rounded-2xl p-8 shadow-md"
-          >
+          <div className="text-center mt-16 bg-white border border-gray-100 rounded-2xl p-8 shadow-md">
             <p className="text-lg text-gray-700">
               Cada auto se revisa según su estado real. Si querés consultarnos, en la sección de contacto están todos los datos.
             </p>
-          </motion.div>
+          </div>
 
         </div>
       </section>

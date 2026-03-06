@@ -6,14 +6,13 @@ import { motion } from 'framer-motion';
 const About = () => {
 
   const fadeInVariants = {
-  hidden: { opacity: 0, y: 50 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.6 } }
+  hidden: { y: 30 },
+  visible: { y: 0, transition: { duration: 0.6 } }
   };
 
   const containerStagger = {
-    hidden: { opacity: 0 },
+    hidden: {},
     visible: {
-      opacity: 1,
       transition: {
         staggerChildren: 0.15, 
         delayChildren: 0.2
@@ -22,8 +21,8 @@ const About = () => {
   };
 
   const itemStagger = {
-    hidden: { y: 20, opacity: 0 },
-    visible: { y: 0, opacity: 1, transition: { duration: 0.5 } }
+    hidden: { y: 15 },
+    visible: { y: 0, transition: { duration: 0.5 } }
   };
 
 
@@ -55,13 +54,7 @@ const About = () => {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             
             {/* Image Block: Animación de entrada por la izquierda */}
-            <motion.div 
-              initial={{ opacity: 0, x: -50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true, amount: 0.3 }}
-              transition={{ duration: 0.7 }}
-              className="relative h-96"
-            >
+            <div className="relative h-96">
               <div className="absolute inset-0 bg-gradient-to-br from-red-600/20 to-red-500/5 rounded-3xl blur-sm"></div>
               <div className="relative h-full bg-white border border-gray-100 shadow-2xl rounded-3xl flex items-center justify-center">
                 <div className="text-center p-8">
@@ -70,7 +63,7 @@ const About = () => {
                   <p className="text-gray-500 text-sm mt-1">Atención directa y cercana</p>
                 </div>
               </div>
-            </motion.div>
+            </div>
 
             {/* Content Block: Animación de entrada por abajo */}
             <motion.div

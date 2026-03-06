@@ -43,9 +43,8 @@ const Services = () => {
 
   // Configuración de la animación Staggered
   const container = {
-    hidden: { opacity: 0 },
+    hidden: {},
     visible: {
-      opacity: 1,
       transition: {
         staggerChildren: 0.1 
       }
@@ -53,8 +52,8 @@ const Services = () => {
   };
 
   const item = {
-    hidden: { y: 20, opacity: 0 },
-    visible: { y: 0, opacity: 1, transition: { duration: 0.4 } }
+    hidden: { y: 20 },
+    visible: { y: 0, transition: { duration: 0.4 } }
   };
 
   return (
@@ -66,7 +65,7 @@ const Services = () => {
 
       <div className="container mx-auto px-4 relative z-10">
         <motion.div 
-          initial={{ y: -20, opacity: 0 }}
+          initial={{ y: 0, opacity: 1 }}
           whileInView={{ y: 0, opacity: 1 }}
           viewport={{ once: true, amount: 0.3 }} 
           transition={{ duration: 0.5 }}
@@ -83,8 +82,8 @@ const Services = () => {
         <motion.div
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
           variants={container}
-          initial="hidden"
-          whileInView="visible" 
+          initial={{ opacity: 1 }}
+          whileInView={{ opacity: 1 }} 
           viewport={{ once: true, amount: 0.3 }}
           role="list"
         >

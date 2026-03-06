@@ -44,7 +44,7 @@ const Contact = () => {
 
       <div className="container mx-auto px-4 relative z-10">
         <motion.div 
-          initial="hidden"
+          initial="visible"
           whileInView="visible"
           viewport={{ once: true, amount: 0.3 }}
           variants={sectionVariants}
@@ -57,7 +57,7 @@ const Contact = () => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
           {/* Contact Info */}
           <motion.div
-            initial="hidden"
+            initial="visible"
             whileInView="visible"
             viewport={{ once: true, amount: 0.3 }}
             variants={sectionVariants}
@@ -118,6 +118,7 @@ const Contact = () => {
               <h4 className="text-lg font-semibold mb-4">¿Cómo llegar?</h4>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 <button
+                  type="button"
                   onClick={getDirections}
                   className="flex items-center justify-center gap-2 bg-blue-600 hover:bg-blue-700 text-white font-semibold px-5 py-3 rounded-xl transition-all duration-300 transform hover:scale-105 shadow-lg"
                 >
@@ -125,6 +126,7 @@ const Contact = () => {
                   Cómo llegar
                 </button>
                 <button
+                  type="button"
                   onClick={openInWaze}
                   className="flex items-center justify-center gap-2 bg-cyan-500 hover:bg-cyan-600 text-white font-semibold px-5 py-3 rounded-xl transition-all duration-300 transform hover:scale-105 shadow-lg"
                 >
@@ -137,7 +139,7 @@ const Contact = () => {
 
           {/* Google Maps */}
           <motion.div
-            initial="hidden"
+            initial="visible"
             whileInView="visible"
             viewport={{ once: true, amount: 0.3 }}
             variants={sectionVariants}

@@ -14,9 +14,8 @@ import { motion } from 'framer-motion';
  */
 const Hero = () => {
   const containerVariants = {
-    hidden: { opacity: 0 },
+    hidden: {},
     visible: {
-      opacity: 1,
       transition: {
         staggerChildren: 0.12, 
         delayChildren: 0.2
@@ -25,8 +24,8 @@ const Hero = () => {
   };
 
   const itemVariants = {
-    hidden: { y: 20, opacity: 0 },
-    visible: { y: 0, opacity: 1, transition: { duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] } }
+    hidden: { y: 20 },
+    visible: { y: 0, transition: { duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] } }
   };
 
   const stats = [
@@ -48,12 +47,7 @@ const Hero = () => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center min-h-[85vh] py-8">
           
           {/* Text Content */}
-          <motion.div 
-            className="text-center lg:text-left space-y-8"
-            variants={containerVariants}
-            initial="hidden"
-            animate="visible"
-          >
+          <div className="text-center lg:text-left space-y-8">
             <motion.div 
               variants={itemVariants} 
               className="inline-flex items-center bg-gradient-to-r from-red-600/20 to-red-500/20 backdrop-blur-sm px-5 py-2.5 rounded-full border border-red-500/30 mb-2"
@@ -100,15 +94,10 @@ const Hero = () => {
                 Ver Servicios
               </a>
             </motion.div>
-          </motion.div>
+          </div>
 
           {/* Carrusel Mejorado */}
-          <motion.div
-            initial={{ x: 50, opacity: 0, scale: 0.95 }}
-            animate={{ x: 0, opacity: 1, scale: 1 }}
-            transition={{ duration: 0.8, delay: 0.4, ease: [0.25, 0.46, 0.45, 0.94] }} 
-            className="relative h-[450px] lg:h-[600px]"
-          > 
+          <div className="relative h-[450px] lg:h-[600px]"> 
             {/* Efectos decorativos alrededor del carrusel */}
             <div className="absolute -inset-4 bg-gradient-to-r from-red-600/20 via-red-500/20 to-red-600/20 rounded-[2rem] blur-2xl opacity-60 animate-pulse"></div>
             
@@ -120,15 +109,10 @@ const Hero = () => {
               <HeroImageCarousel />
             </div>
 
-            <motion.div
-              initial={{ y: 20, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              transition={{ delay: 1.2, duration: 0.6 }}
-              className="absolute -bottom-6 left-1/2 -translate-x-1/2 bg-gradient-to-r from-gray-900 to-gray-800 px-6 py-3 rounded-full border border-red-500/60 shadow-xl backdrop-blur-sm"
-            >
+            <div className="absolute -bottom-6 left-1/2 -translate-x-1/2 bg-gradient-to-r from-gray-900 to-gray-800 px-6 py-3 rounded-full border border-red-500/60 shadow-xl backdrop-blur-sm">
               <p className="text-white font-semibold text-sm">Atención directa y diagnóstico sincero</p>
-            </motion.div>
-          </motion.div>
+            </div>
+          </div>
         </div>
       </div>
 
