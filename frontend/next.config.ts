@@ -1,5 +1,8 @@
 import type { NextConfig } from "next";
 
+const corsAllowedOrigin = process.env.CORS_ALLOW_ORIGIN
+  ?? (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : "http://localhost:3000");
+
 const contentSecurityPolicy = [
   "default-src 'self'",
   "base-uri 'self'",
@@ -41,6 +44,22 @@ const nextConfig: NextConfig = {
             key: "Permissions-Policy",
             value:
               "accelerometer=(), autoplay=(), camera=(), geolocation=(), gyroscope=(), magnetometer=(), microphone=(), payment=(), usb=(), browsing-topics=()",
+          },
+          {
+            key: "Access-Control-Allow-Origin",
+            value: corsAllowedOrigin,
+          },
+          {
+            key: "Access-Control-Allow-Credentials",
+            value: "true",
+          },
+          {
+            key: "Access-Control-Allow-Methods",
+            value: "GET,POST,PUT,PATCH,DELETE,OPTIONS",
+          },
+          {
+            key: "Access-Control-Allow-Headers",
+            value: "Content-Type, Authorization, X-Requested-With",
           },
         ],
       },
