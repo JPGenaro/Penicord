@@ -1,5 +1,5 @@
 'use client';
-import { FaPhone, FaWhatsapp, FaMapMarkerAlt, FaClock } from 'react-icons/fa';
+import { FaWhatsapp, FaMapMarkerAlt, FaClock } from 'react-icons/fa';
 import { motion } from 'framer-motion';
 
 /**
@@ -22,8 +22,13 @@ const Contact = () => {
   };
 
   return (
-    <section id="contacto" className="py-20 bg-gray-900 text-white">
-      <div className="container mx-auto px-4">
+    <section id="contacto" className="relative py-24 bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 text-white overflow-hidden">
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute top-0 left-0 h-72 w-72 rounded-full bg-red-500/10 blur-3xl" />
+        <div className="absolute bottom-0 right-0 h-80 w-80 rounded-full bg-red-600/10 blur-3xl" />
+      </div>
+
+      <div className="container mx-auto px-4 relative z-10">
         <motion.div 
           initial="hidden"
           whileInView="visible"
@@ -31,11 +36,11 @@ const Contact = () => {
           variants={sectionVariants}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl font-bold mb-4">Contacto</h2>
-          <p className="text-xl text-gray-300">Estamos para ayudarte con tu vehículo</p>
+          <h2 className="text-4xl md:text-5xl font-extrabold mb-4">Contacto</h2>
+          <p className="text-lg md:text-xl text-gray-300 max-w-3xl mx-auto">Atención clara y trato de confianza para tu vehículo.</p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
           {/* Contact Info */}
           <motion.div
             initial="hidden"
@@ -43,17 +48,15 @@ const Contact = () => {
             viewport={{ once: true, amount: 0.3 }}
             variants={sectionVariants}
           >
-            <h3 className="text-2xl font-semibold mb-6">Información de Contacto</h3>
-            
+            <h3 className="text-2xl font-bold mb-6">Información de contacto</h3>
             <div className="space-y-6">
-              <div className="flex items-center">
-                <div className="bg-red-600 p-3 rounded-lg mr-4">
+              <div className="flex items-center bg-white/5 border border-white/10 p-5 rounded-2xl backdrop-blur-sm">
+                <div className="bg-red-600 p-3 rounded-lg mr-4 shadow-lg shadow-red-900/30">
                   <FaMapMarkerAlt className="text-xl" />
                 </div>
                 <div>
                   <h4 className="font-semibold">Dirección</h4>
-                  {/* Dirección */}
-                  <p className="text-gray-300">Alejandro Aguado 1017, Barrio Talleres Oeste</p> 
+                  <p className="text-gray-300">Alejandro Aguado 1017, Barrio Talleres Oeste</p>
                   <p className="text-gray-300">Córdoba, Argentina</p>
                   <a 
                     href={`https://maps.google.com/?q=${encodeURIComponent(mapAddress)}`}
@@ -66,20 +69,18 @@ const Contact = () => {
                 </div>
               </div>
 
-              <div className="flex items-center">
-                <div className="bg-red-600 p-3 rounded-lg mr-4">
-                  <FaPhone className="text-xl" />
+              <div className="flex items-center bg-white/5 border border-white/10 p-5 rounded-2xl backdrop-blur-sm">
+                <div className="bg-red-600 p-3 rounded-lg mr-4 shadow-lg shadow-red-900/30">
+                  <FaWhatsapp className="text-xl" />
                 </div>
                 <div>
-                  <h4 className="font-semibold">Teléfono</h4>
+                  <h4 className="font-semibold">WhatsApp</h4>
                   <p className="text-gray-300">+54 351 890-0167</p>
                 </div>
               </div>
 
-             
-
-              <div className="flex items-center">
-                <div className="bg-red-600 p-3 rounded-lg mr-4">
+              <div className="flex items-center bg-white/5 border border-white/10 p-5 rounded-2xl backdrop-blur-sm">
+                <div className="bg-red-600 p-3 rounded-lg mr-4 shadow-lg shadow-red-900/30">
                   <FaClock className="text-xl" />
                 </div>
                 <div>
@@ -98,9 +99,9 @@ const Contact = () => {
             viewport={{ once: true, amount: 0.3 }}
             variants={sectionVariants}
           >
-            <h3 className="text-2xl font-semibold mb-6">Ubicación de nuestro taller</h3>
-            
-            <div className="relative h-96 w-full rounded-lg overflow-hidden border-2 border-red-600 shadow-xl">
+            <h3 className="text-2xl font-bold mb-6">Ubicación del taller</h3>
+            <div className="relative h-96 w-full rounded-2xl overflow-hidden border border-red-500/40 shadow-2xl">
+              <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-red-500 to-red-700 z-10" />
               <iframe
                 src={mapEmbedUrl} 
                 width="100%"

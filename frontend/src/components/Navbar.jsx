@@ -91,7 +91,7 @@ const Navbar = () => {
               
               <span className="relative z-10 flex items-center gap-2">
                 <FaWhatsapp className="text-lg group-hover:rotate-12 transition-transform duration-300" />
-                <span className="hidden lg:inline">Contactar</span>
+                <span className="hidden lg:inline">Pedir turno</span>
               </span>
             </a>
           </div>
@@ -148,7 +148,7 @@ const Navbar = () => {
                 className="mt-3 bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white px-6 py-3.5 rounded-xl font-semibold shadow-lg hover:shadow-red-500/50 transition-all duration-300 hover:scale-[1.02] flex items-center justify-center gap-3 group"
               >
                 <FaWhatsapp className="text-xl group-hover:rotate-12 transition-transform duration-300" />
-                <span>Contactar por WhatsApp</span>
+                <span>Pedir turno por WhatsApp</span>
               </a>
             </div>
           </div>

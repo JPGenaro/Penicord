@@ -1,5 +1,5 @@
 'use client';
-import { FaWhatsapp, FaTools, FaCheckCircle, FaAward, FaClock } from 'react-icons/fa';
+import { FaWhatsapp, FaTools, FaAward, FaClock, FaWrench } from 'react-icons/fa';
 import HeroImageCarousel from './HeroImageCarousel'; 
 import { motion } from 'framer-motion'; 
 
@@ -31,8 +31,8 @@ const Hero = () => {
 
   const stats = [
     { icon: <FaAward />, value: "60+", label: "Años de experiencia" },
-    { icon: <FaCheckCircle />, value: "100%", label: "Clientes satisfechos" },
-    { icon: <FaClock />, value: "24h", label: "Respuesta rápida" }
+    { icon: <FaWrench />, value: "Real", label: "Diagnóstico claro" },
+    { icon: <FaClock />, value: "Directo", label: "Atención sin vueltas" }
   ];
 
   return (
@@ -59,27 +59,24 @@ const Hero = () => {
               className="inline-flex items-center bg-gradient-to-r from-red-600/20 to-red-500/20 backdrop-blur-sm px-5 py-2.5 rounded-full border border-red-500/30 mb-2"
             >
               <FaTools className="text-red-400 mr-2 text-lg" />
-              <span className="text-red-300 font-medium">Taller Mecánico Especializado</span>
+              <span className="text-red-300 font-medium">Taller familiar en Córdoba</span>
             </motion.div>
             
             <motion.h1 
               variants={itemVariants} 
               className="text-5xl md:text-7xl font-extrabold leading-tight"
             >
-              Expertos en{' '}
+              Mecánica Automotriz{' '}
               <span className="bg-gradient-to-r from-red-500 to-red-600 bg-clip-text text-transparent">
-                Mecánica
+                de Confianza
               </span>
-              <br />
-              Automotriz
             </motion.h1>
             
             <motion.p 
               variants={itemVariants} 
               className="text-xl md:text-2xl text-gray-300 leading-relaxed max-w-2xl mx-auto lg:mx-0"
             >
-              En Penicord brindamos soluciones integrales para el mantenimiento y reparación de tu vehículo. 
-              <span className="text-red-400 font-semibold"> Confía en profesionales con experiencia.</span>
+              En Penicord trabajamos con honestidad: revisamos tu vehículo, te explicamos qué tiene y resolvemos lo que realmente hace falta.
             </motion.p>
             
             <motion.div 
@@ -94,7 +91,7 @@ const Hero = () => {
               >
                 <span className="absolute inset-0 w-0 bg-white/20 transition-all duration-500 ease-out group-hover:w-full"></span>
                 <FaWhatsapp className="text-xl relative z-10" />
-                <span className="relative z-10">Solicitar Turno</span>
+                <span className="relative z-10">Pedir Turno</span>
               </a>
               <a
                 href="#servicios"
@@ -123,17 +120,13 @@ const Hero = () => {
               <HeroImageCarousel />
             </div>
 
-            {/* Badge flotante */}
             <motion.div
               initial={{ y: 20, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               transition={{ delay: 1.2, duration: 0.6 }}
-              className="absolute -bottom-6 left-1/2 -translate-x-1/2 bg-gradient-to-r from-gray-900 to-gray-800 px-6 py-3 rounded-full border-2 border-red-500 shadow-xl backdrop-blur-sm"
+              className="absolute -bottom-6 left-1/2 -translate-x-1/2 bg-gradient-to-r from-gray-900 to-gray-800 px-6 py-3 rounded-full border border-red-500/60 shadow-xl backdrop-blur-sm"
             >
-              <p className="text-white font-semibold text-sm flex items-center gap-2">
-                <FaCheckCircle className="text-green-400" />
-                Taller verificado y certificado
-              </p>
+              <p className="text-white font-semibold text-sm">Atención directa y diagnóstico sincero</p>
             </motion.div>
           </motion.div>
         </div>

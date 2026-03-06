@@ -62,8 +62,13 @@ const GaleriaPage = () => {
     <main className="min-h-screen bg-gray-50">
       <Navbar /> 
       
-      <section id="galeria-historias" className="pt-32 pb-20">
-        <div className="container mx-auto px-4">
+      <section id="galeria-historias" className="relative pt-32 pb-20 overflow-hidden">
+        <div className="absolute inset-0 pointer-events-none">
+          <div className="absolute top-0 right-0 h-72 w-72 rounded-full bg-red-100/50 blur-3xl" />
+          <div className="absolute bottom-0 left-0 h-80 w-80 rounded-full bg-red-100/40 blur-3xl" />
+        </div>
+
+        <div className="container mx-auto px-4 relative z-10">
           
           {/* Título de la Sección */}
           <motion.div
@@ -72,11 +77,11 @@ const GaleriaPage = () => {
             transition={{ duration: 0.5 }}
             className="text-center mb-16"
           >
-            <h1 className="text-5xl font-extrabold text-gray-800 mb-4">
-              Historias de Taller 🛠️
+            <h1 className="text-5xl md:text-6xl font-extrabold text-gray-900 mb-4">
+              Trabajos del Taller
             </h1>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Detrás de cada reparación hay una historia. Te mostramos nuestros trabajos más recientes y destacados.
+              Algunos trabajos recientes para que veas cómo encaramos cada reparación, con criterio y prolijidad.
             </p>
           </motion.div>
 
@@ -92,7 +97,7 @@ const GaleriaPage = () => {
               <motion.article
                 key={historia.id}
                 variants={itemVariants}
-                className="bg-white rounded-2xl shadow-xl overflow-hidden transform hover:scale-[1.02] transition-transform duration-500 ease-out border-t-4 border-red-600"
+                className="bg-white rounded-2xl border border-gray-100 shadow-lg overflow-hidden transform hover:-translate-y-1 hover:shadow-2xl transition-all duration-300"
                 role="listitem"
               >
                 {/* Imagen del Trabajo */}
@@ -107,7 +112,7 @@ const GaleriaPage = () => {
 
                 <div className="p-6">
                   {/* Título y Fecha */}
-                  <h2 className="text-2xl font-bold text-gray-800 mb-2">{historia.titulo}</h2>
+                  <h2 className="text-2xl font-bold text-gray-900 mb-2">{historia.titulo}</h2>
                   <p className="text-sm text-red-600 font-semibold mb-4">{historia.fecha}</p>
                   
                   {/* Descripción de la Historia */}
@@ -120,7 +125,7 @@ const GaleriaPage = () => {
                     {historia.servicios.map((servicio) => (
                       <span 
                         key={servicio}
-                        className="text-xs font-medium bg-gray-200 text-gray-700 px-3 py-1 rounded-full"
+                        className="text-xs font-medium bg-red-50 text-red-700 px-3 py-1 rounded-full border border-red-100"
                       >
                         {servicio}
                       </span>
@@ -131,24 +136,16 @@ const GaleriaPage = () => {
             ))}
           </motion.div>
 
-          {/* Call to Action */}
+          {/* Cierre */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.8 }}
-            className="text-center mt-16"
+            className="text-center mt-16 bg-white border border-gray-100 rounded-2xl p-8 shadow-md"
           >
-            <p className="text-lg text-gray-700 mb-4">
-              ¿Tu vehículo necesita una historia de éxito como estas?
+            <p className="text-lg text-gray-700">
+              Cada auto se revisa según su estado real. Si querés consultarnos, en la sección de contacto están todos los datos.
             </p>
-            <a
-              href="https://wa.me/543518900167"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center bg-red-600 hover:bg-red-700 text-white px-8 py-4 rounded-full text-lg font-semibold transition-all duration-300 shadow-lg"
-            >
-              Agenda tu turno por WhatsApp
-            </a>
           </motion.div>
 
         </div>

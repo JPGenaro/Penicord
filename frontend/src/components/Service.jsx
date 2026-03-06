@@ -3,10 +3,7 @@ import { FaCog, FaOilCan, FaCar, FaTools, FaExclamationTriangle, FaCarBattery } 
 import { motion } from 'framer-motion';
 
 /**
- * Services - lista de tarjetas de servicios ofrecidos.
- *
- * Define una colección de servicios con icono, título y descripción
- * y las renderiza con animación mediante `framer-motion`.
+ * Services - lista de tarjetas de servicios.
  * @component
  * @returns {JSX.Element} Sección de servicios.
  */
@@ -15,7 +12,7 @@ const Services = () => {
     {
       icon: <FaOilCan className="text-3xl text-red-600" />,
       title: "Cambio de Aceite y Filtros",
-      description: "Servicio completo de cambio de aceite y filtros de primera calidad para un óptimo rendimiento."
+      description: "Servicio completo de cambio de aceite y filtros para cuidar el rendimiento del motor."
     },
     {
       icon: <FaCarBattery className="text-3xl text-red-600" />,
@@ -30,17 +27,17 @@ const Services = () => {
     {
       icon: <FaTools className="text-3xl text-red-600" />,
       title: "Mecánica General",
-      description: "Mantenimiento preventivo y reparaciones generales para mantener tu vehículo en perfectas condiciones."
+      description: "Mantenimiento preventivo y reparaciones generales para mantener tu vehículo en buenas condiciones."
     },
     {
       icon: <FaCog className="text-3xl text-red-600" />,
       title: "Reparación de Motor",
-      description: "Diagnóstico y reparación especializada de motores de todas las marcas y modelos."
+      description: "Diagnóstico y reparación de motores de distintas marcas y modelos."
     },
     {
       icon: <FaCar className="text-3xl text-red-600" />,
       title: "Servicios Electromecánicos",
-      description: "Soluciones integrales para fallas complejas en los sistemas de tu vehículo."
+      description: "Soluciones para fallas complejas en los sistemas de tu vehículo."
     }
   ];
 
@@ -61,8 +58,13 @@ const Services = () => {
   };
 
   return (
-    <section id="servicios" className="py-20 bg-gray-50">
-      <div className="container mx-auto px-4">
+    <section id="servicios" className="relative py-24 bg-gradient-to-b from-gray-50 to-white overflow-hidden">
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute -top-24 -left-24 h-72 w-72 rounded-full bg-red-100/50 blur-3xl" />
+        <div className="absolute -bottom-20 -right-20 h-80 w-80 rounded-full bg-red-100/40 blur-3xl" />
+      </div>
+
+      <div className="container mx-auto px-4 relative z-10">
         <motion.div 
           initial={{ y: -20, opacity: 0 }}
           whileInView={{ y: 0, opacity: 1 }}
@@ -70,13 +72,14 @@ const Services = () => {
           transition={{ duration: 0.5 }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl font-bold text-gray-800 mb-4">Nuestros Servicios</h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Ofrecemos servicios mecánicos y electromecánicos con un enfoque en la calidad y la experiencia.
+          <h2 className="text-4xl md:text-5xl font-extrabold text-gray-900 mb-4">
+            Servicios con honestidad y confianza
+          </h2>
+          <p className="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+            Revisamos cada trabajo con claridad, te explicamos lo necesario y buscamos soluciones reales para tu vehículo.
           </p>
         </motion.div>
 
-        {/* Contenedor de las tarjetas con la animación Staggered */}
         <motion.div
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
           variants={container}
@@ -86,28 +89,21 @@ const Services = () => {
           role="list"
         >
           {services.map((service, index) => (
-             <motion.article 
+            <motion.article 
               key={index} 
               variants={item}
-              className="bg-white p-8 rounded-2xl shadow-md hover:shadow-xl transition-shadow duration-300"
+              whileHover={{ y: -6 }}
+              className="group relative bg-white p-8 rounded-2xl border border-gray-100 shadow-md hover:shadow-2xl transition-all duration-300"
               role="listitem"
             >
-              <div className="bg-red-50 p-4 rounded-xl inline-block mb-4" aria-hidden="true">
+              <div className="absolute top-0 left-6 right-6 h-1 bg-gradient-to-r from-red-500 to-red-700 rounded-b-full" />
+              <div className="bg-gradient-to-br from-red-50 to-red-100 p-4 rounded-xl inline-block mb-4 group-hover:scale-105 transition-transform duration-300" aria-hidden="true">
                 {service.icon}
               </div>
-              <h3 className="text-xl font-semibold text-gray-800 mb-3">{service.title}</h3>
-              <p className="text-gray-600">{service.description}</p>
+              <h3 className="text-xl font-semibold text-gray-900 mb-3">{service.title}</h3>
+              <p className="text-gray-600 leading-relaxed">{service.description}</p>
             </motion.article>
           ))}
-        </motion.div>
-
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.5, duration: 0.5 }}
-          className="text-center mt-12"
-        >
         </motion.div>
       </div>
     </section>
