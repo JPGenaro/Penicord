@@ -1,4 +1,4 @@
-import { FaFacebook, FaInstagram, FaTwitter, FaWhatsapp } from 'react-icons/fa';
+import { FaWhatsapp } from 'react-icons/fa';
 
 const Footer = () => {
   return (
@@ -31,17 +31,22 @@ const Footer = () => {
 
           {/* Contact */}
           <div>
-            <h4 className="text-lg font-semibold mb-4">Ubicacion y contacto</h4>
+            <h4 className="text-lg font-semibold mb-4">Ubicación y contacto</h4>
             <div className="space-y-2 text-gray-400">
               <p>Alejandro Aguado 1017</p>
               <p>Barrio Talleres Oeste, Córdoba</p>
-              
+              <p className="flex items-center gap-2 mt-3">
+                <FaWhatsapp className="text-green-500" /> 
+                <a href="https://wa.me/543518900167" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">
+                  +54 351 890-0167
+                </a>
+              </p>
             </div>
           </div>
         </div>
 
         <div className="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400">
-          <p>&copy; 2025 Penicord Taller Mecánico. Todos los derechos reservados.</p>
+          <p>&copy; 2026 Penicord Taller Mecánico. Todos los derechos reservados.</p>
         </div>
       </div>
     </footer>

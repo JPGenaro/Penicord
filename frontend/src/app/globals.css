@@ -25,16 +25,61 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
+/* --- Animaciones personalizadas --- */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -1000px 0;
+  }
+  100% {
+    background-position: 1000px 0;
+  }
+}
+
+@keyframes gradient-shift {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+.animate-shimmer {
+  animation: shimmer 2s infinite;
+  background-size: 1000px 100%;
+}
+
 /* --- Estilos para Embla Carousel --- */
 .embla {
   overflow: hidden; 
 }
 
+.embla__viewport {
+  overflow: hidden;
+  width: 100%;
+}
+
 .embla__container {
   display: flex;
+  backface-visibility: hidden;
+  touch-action: pan-y;
 }
 
 .embla__slide {
   flex: 0 0 100%; 
   min-width: 0;
+  position: relative;
 }

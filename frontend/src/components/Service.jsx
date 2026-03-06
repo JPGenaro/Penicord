@@ -83,19 +83,21 @@ const Services = () => {
           initial="hidden"
           whileInView="visible" 
           viewport={{ once: true, amount: 0.3 }}
+          role="list"
         >
           {services.map((service, index) => (
-             <motion.div 
+             <motion.article 
               key={index} 
               variants={item}
               className="bg-white p-8 rounded-2xl shadow-md hover:shadow-xl transition-shadow duration-300"
+              role="listitem"
             >
-              <div className="bg-red-50 p-4 rounded-xl inline-block mb-4">
+              <div className="bg-red-50 p-4 rounded-xl inline-block mb-4" aria-hidden="true">
                 {service.icon}
               </div>
               <h3 className="text-xl font-semibold text-gray-800 mb-3">{service.title}</h3>
               <p className="text-gray-600">{service.description}</p>
-            </motion.div>
+            </motion.article>
           ))}
         </motion.div>
 

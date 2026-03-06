@@ -86,21 +86,22 @@ const GaleriaPage = () => {
             variants={containerVariants}
             initial="hidden"
             animate="visible"
+            role="list"
           >
             {historiasTrabajos.map((historia) => (
-              <motion.div
+              <motion.article
                 key={historia.id}
                 variants={itemVariants}
                 className="bg-white rounded-2xl shadow-xl overflow-hidden transform hover:scale-[1.02] transition-transform duration-500 ease-out border-t-4 border-red-600"
+                role="listitem"
               >
                 {/* Imagen del Trabajo */}
                 <div className="relative h-60 w-full">
                   <Image
                     src={historia.imagenUrl}
                     alt={historia.titulo}
-                    layout="fill"
-                    objectFit="cover"
-                    className="object-center"
+                    fill
+                    className="object-cover object-center"
                   />
                 </div>
 
@@ -126,7 +127,7 @@ const GaleriaPage = () => {
                     ))}
                   </div>
                 </div>
-              </motion.div>
+              </motion.article>
             ))}
           </motion.div>
 
@@ -142,6 +143,8 @@ const GaleriaPage = () => {
             </p>
             <a
               href="https://wa.me/543518900167"
+              target="_blank"
+              rel="noopener noreferrer"
               className="inline-flex items-center bg-red-600 hover:bg-red-700 text-white px-8 py-4 rounded-full text-lg font-semibold transition-all duration-300 shadow-lg"
             >
               Agenda tu turno por WhatsApp
