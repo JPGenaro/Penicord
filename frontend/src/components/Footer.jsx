@@ -18,7 +18,7 @@ const Footer = () => {
               <div className="bg-gradient-to-br from-red-600 to-red-700 text-white p-2.5 rounded-lg mr-3 shadow-lg shadow-red-900/30">
                 <FaTools className="text-2xl" />
               </div>
-              <span className="text-2xl font-bold">PENICORD</span>
+              <span className="text-2xl font-bold">RUGGERI</span>
             </div>
             <p className="text-gray-300 leading-relaxed">
               Taller mecánico familiar en Córdoba. Trabajo honesto, diagnóstico claro y trato de confianza.
@@ -61,7 +61,7 @@ const Footer = () => {
         </div>
 
         <div className="border-t border-gray-700/80 mt-10 pt-8 text-center text-gray-400 relative z-10">
-          <p>&copy; {currentYear} Penicord Taller Mecánico. Todos los derechos reservados.</p>
+          <p>&copy; {currentYear} Ruggeri Taller Mecánico. Todos los derechos reservados.</p>
         </div>
       </div>
     </footer>

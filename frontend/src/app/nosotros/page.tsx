@@ -59,7 +59,7 @@ const About = () => {
               <div className="relative h-full bg-white border border-gray-100 shadow-2xl rounded-3xl flex items-center justify-center">
                 <div className="text-center p-8">
                   <div className="w-20 h-20 bg-red-100 rounded-full flex items-center justify-center text-4xl text-red-600 mb-4 mx-auto">👥</div>
-                  <p className="text-gray-700 font-semibold">Equipo Penicord</p>
+                  <p className="text-gray-700 font-semibold">Equipo Ruggeri</p>
                   <p className="text-gray-500 text-sm mt-1">Atención directa y cercana</p>
                 </div>
               </div>
@@ -72,7 +72,7 @@ const About = () => {
               viewport={{ once: true, amount: 0.3 }}
               variants={fadeInVariants}
             >
-              <h2 className="text-4xl md:text-5xl font-extrabold text-gray-900 mb-6">Sobre Penicord</h2>
+              <h2 className="text-4xl md:text-5xl font-extrabold text-gray-900 mb-6">Sobre Ruggeri</h2>
               <p className="text-lg text-gray-600 mb-6">
                 Somos un taller mecánico especializado en electromecánica con trayectoria desde 1960 en Córdoba. Trabajamos con trato humano, diagnóstico claro y soluciones responsables.
               </p>

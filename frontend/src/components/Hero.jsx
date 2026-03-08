@@ -70,7 +70,7 @@ const Hero = () => {
               variants={itemVariants} 
               className="text-xl md:text-2xl text-gray-300 leading-relaxed max-w-2xl mx-auto lg:mx-0"
             >
-              En Penicord trabajamos con honestidad: revisamos tu vehículo, te explicamos qué tiene y resolvemos lo que realmente hace falta.
+              En Ruggeri trabajamos con honestidad: revisamos tu vehículo, te explicamos qué tiene y resolvemos lo que realmente hace falta.
             </motion.p>
             
             <motion.div 

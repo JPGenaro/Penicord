@@ -136,7 +136,7 @@ const Contact = () => {
                 allowFullScreen
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
-                title="Ubicación de Penicord Taller Mecánico"
+                title="Ubicación de Ruggeri Taller Mecánico"
               ></iframe>
             </div>
             

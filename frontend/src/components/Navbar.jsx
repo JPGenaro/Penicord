@@ -57,7 +57,7 @@ const Navbar = () => {
             
             <div className="flex flex-col">
               <span className="text-2xl font-extrabold bg-gradient-to-r from-gray-900 to-gray-700 bg-clip-text text-transparent group-hover:from-red-600 group-hover:to-red-700 transition-all duration-300">
-                PENICORD
+                RUGGERI
               </span>
               <span className="text-xs text-gray-500 font-medium -mt-1">Taller Mecánico</span>
             </div>

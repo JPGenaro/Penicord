@@ -130,7 +130,7 @@ const HeroImageCarousel = () => {
               
               <Image
                 src={src}
-                alt={`Taller Penicord ${index + 1}`}
+                alt={`Taller Ruggeri ${index + 1}`}
                 fill
                 className="object-cover transition-transform duration-700 group-hover:scale-105"
                 priority={index === 0}
@@ -237,7 +237,7 @@ const HeroImageCarousel = () => {
           >
             <Image
               src={lightboxImage.src}
-              alt={`Taller Penicord ${lightboxImage.index + 1} - Ampliado`}
+              alt={`Taller Ruggeri ${lightboxImage.index + 1} - Ampliado`}
               width={1920}
               height={1080}
               className="object-contain max-w-full max-h-[95vh] rounded-lg shadow-2xl"

@@ -13,7 +13,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Penicord - Taller Mecánico Especializado | Córdoba",
+  title: "Ruggeri - Taller Mecánico Especializado | Córdoba",
   description: "Taller mecánico especializado en electromecánica y electricidad del automotor. Más de 60 años de experiencia en Córdoba, Argentina.",
   icons: {
     icon: "/favicon.svg",
