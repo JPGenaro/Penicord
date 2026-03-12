@@ -1,98 +1,272 @@
-'use client'; 
-import { useState } from 'react';
+'use client';
+import { useCallback, useEffect, useState } from 'react';
 import Navbar from '../../components/Navbar';
 import Footer from '../../components/Footer';
 import Image from 'next/image';
-import { motion, Variants } from 'framer-motion';
-import { FaFilter } from 'react-icons/fa';
+import { AnimatePresence, motion } from 'framer-motion';
+import useEmblaCarousel from 'embla-carousel-react';
+import Autoplay from 'embla-carousel-autoplay';
+import { FaChevronLeft, FaChevronRight, FaTimes } from 'react-icons/fa';
 
-// --- Data de Ejemplos para la Galería ---
-const historiasTrabajos = [
-  {
-    id: 1,
-    titulo: "El Clásico Renault 12: Cambio de Instalación Eléctrica Completa",
-    descripcion: "Un cliente nos trajo su amado R-12, con un sistema eléctrico muy deteriorado. Desmontamos toda la instalación y colocamos un nuevo cableado y fusibles, devolviéndole la vida a cada luz e instrumento. Un trabajo de precisión que nos tomó 3 días.",
-    imagenUrl: '/entrada1.webp',
-    fecha: 'Marzo 2024',
-    servicios: ["Electricidad del Automotor", "Diagnóstico"]
-  },
-  {
-    id: 2,
-    titulo: "Motor Recalentado en una F-100: Reemplazo de Junta de Tapa de Cilindros",
-    descripcion: "Una camioneta Ford F-100 sufría de un recalentamiento severo. Detectamos la falla en la junta de tapa de cilindros. Se planificó la tapa, se reemplazaron los sellos y se ajustó el motor a las especificaciones de fábrica. ¡Quedó como nueva!",
-    imagenUrl: '/herramientas1.webp', 
-    fecha: 'Febrero 2024',
-    servicios: ["Reparación de Motor", "Mecánica General"]
-  },
-  {
-    id: 3,
-    titulo: "Ajuste Fino de Carburador y Encendido en un Fiat 600",
-    descripcion: "Trabajamos en la puesta a punto de un 'Fitito' para un coleccionista. Ajustamos el carburador y el sistema de encendido para optimizar el consumo y la respuesta del motor. Pequeños autos, grandes desafíos.",
-    imagenUrl: '/interior2.webp', 
-    fecha: 'Enero 2024',
-    servicios: ["Puesta a Punto", "Mecánica General"]
-  },
-  {
-    id: 4,
-    titulo: "Reparación Sistema de Frenos en Volkswagen Gol",
-    descripcion: "Reemplazo completo de pastillas, discos y líquido de frenos. El cliente reportaba ruidos y pérdida de efectividad en la frenada. Ahora frena perfectamente y con total seguridad.",
-    imagenUrl: '/entrada1.webp',
-    fecha: 'Diciembre 2023',
-    servicios: ["Sistema de Frenos", "Mecánica General"]
-  },
-  {
-    id: 5,
-    titulo: "Diagnóstico Electrónico y Scanner en Chevrolet Corsa",
-    descripcion: "El auto presentaba fallas intermitentes y se encendía la luz del motor. Realizamos diagnóstico completo con scanner, detectamos sensor de oxígeno defectuoso y lo reemplazamos. Problema resuelto.",
-    imagenUrl: '/herramientas1.webp',
-    fecha: 'Noviembre 2023',
-    servicios: ["Diagnóstico", "Electricidad del Automotor"]
-  },
-  {
-    id: 6,
-    titulo: "Service Completo 10.000 km - Peugeot 208",
-    descripcion: "Cambio de aceite, filtros (aceite, aire, habitáculo), revisión de niveles, inspección de frenos y neumáticos. Service preventivo para mantener el auto en óptimas condiciones.",
-    imagenUrl: '/interior2.webp',
-    fecha: 'Octubre 2023',
-    servicios: ["Puesta a Punto", "Mecánica General"]
-  }
-];
-
-// --- Framer Motion Variants ---
-const containerVariants = {
-  hidden: {},
-  visible: {
-    transition: {
-      staggerChildren: 0.2, 
-      delayChildren: 0.3
-    }
-  }
+const historiaActual = {
+  titulo: 'Ford Ka 1.0 2007 Viral',
+  trabajo: 'Cambio de cazoletas delanteras',
+  descripcion: 'El vehículo ingresó por solicitud del cliente para reemplazo de cazoletas delanteras. Se renovó el apoyo superior (goma y chapa), el apoyo inferior de goma y la crapodina ubicada próxima al resorte de suspensión. Para completar el trabajo correctamente fue necesario desajustar el conjunto de suspensión y luego recalibrar el armado final. El resultado fue una suspensión más estable, sin ruidos y con el cliente plenamente conforme.',
+  carruseles: [
+    {
+      categoria: 'Estado',
+      fotos: [
+        '/Trabajos/FordKa_1_0_2007_N1_juan/CazoletasDelantera/estado1.webp',
+        '/Trabajos/FordKa_1_0_2007_N1_juan/CazoletasDelantera/estado2.webp',
+        '/Trabajos/FordKa_1_0_2007_N1_juan/CazoletasDelantera/estado3.webp',
+      ],
+    },
+    {
+      categoria: 'Paso',
+      fotos: [
+        '/Trabajos/FordKa_1_0_2007_N1_juan/CazoletasDelantera/paso1.webp',
+        '/Trabajos/FordKa_1_0_2007_N1_juan/CazoletasDelantera/paso2.webp',
+        '/Trabajos/FordKa_1_0_2007_N1_juan/CazoletasDelantera/paso3.webp',
+        '/Trabajos/FordKa_1_0_2007_N1_juan/CazoletasDelantera/paso4.webp',
+      ],
+    },
+    {
+      categoria: 'Final',
+      fotos: [
+        '/Trabajos/FordKa_1_0_2007_N1_juan/CazoletasDelantera/final1.webp',
+        '/Trabajos/FordKa_1_0_2007_N1_juan/CazoletasDelantera/final2.webp',
+      ],
+    },
+  ],
 };
 
-const itemVariants: Variants = {
-    hidden: { y: 20 },
-    visible: { 
-      y: 0, 
-      transition: { 
-        duration: 0.5
-      } 
-    }
+type CategoryCarouselProps = {
+  categoria: string;
+  fotos: string[];
+  tituloHistoria: string;
+};
+
+const CategoryCarousel = ({ categoria, fotos, tituloHistoria }: CategoryCarouselProps) => {
+  const [selectedIndex, setSelectedIndex] = useState(0);
+  const [lightboxOpen, setLightboxOpen] = useState(false);
+  const [lightboxIndex, setLightboxIndex] = useState(0);
+
+  const [emblaRef, emblaApi] = useEmblaCarousel(
+    {
+      loop: true,
+      dragFree: false,
+    },
+    [Autoplay({ delay: 4500, stopOnInteraction: false })]
+  );
+
+  const scrollPrev = useCallback(() => {
+    if (emblaApi) emblaApi.scrollPrev();
+  }, [emblaApi]);
+
+  const scrollNext = useCallback(() => {
+    if (emblaApi) emblaApi.scrollNext();
+  }, [emblaApi]);
+
+  const scrollTo = useCallback((index: number) => {
+    if (emblaApi) emblaApi.scrollTo(index);
+  }, [emblaApi]);
+
+  const onSelect = useCallback(() => {
+    if (!emblaApi) return;
+    setSelectedIndex(emblaApi.selectedScrollSnap());
+  }, [emblaApi]);
+
+  const openLightbox = useCallback((index: number) => {
+    setLightboxIndex(index);
+    setLightboxOpen(true);
+  }, []);
+
+  const closeLightbox = useCallback(() => {
+    setLightboxOpen(false);
+  }, []);
+
+  const prevLightbox = useCallback(() => {
+    setLightboxIndex((prev) => (prev - 1 + fotos.length) % fotos.length);
+  }, [fotos.length]);
+
+  const nextLightbox = useCallback(() => {
+    setLightboxIndex((prev) => (prev + 1) % fotos.length);
+  }, [fotos.length]);
+
+  useEffect(() => {
+    if (!emblaApi) return;
+
+    onSelect();
+    emblaApi.on('select', onSelect);
+    emblaApi.on('reInit', onSelect);
+
+    return () => {
+      emblaApi.off('select', onSelect);
+      emblaApi.off('reInit', onSelect);
+    };
+  }, [emblaApi, onSelect]);
+
+  useEffect(() => {
+    if (!lightboxOpen) return;
+
+    document.body.style.overflow = 'hidden';
+    const handleKeyboard = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') closeLightbox();
+      if (e.key === 'ArrowLeft') prevLightbox();
+      if (e.key === 'ArrowRight') nextLightbox();
+    };
+
+    window.addEventListener('keydown', handleKeyboard);
+
+    return () => {
+      document.body.style.overflow = '';
+      window.removeEventListener('keydown', handleKeyboard);
+    };
+  }, [lightboxOpen, closeLightbox, prevLightbox, nextLightbox]);
+
+  return (
+    <>
+      <article className="bg-white rounded-xl border border-gray-100 shadow-sm overflow-hidden group">
+        <div className="relative w-full aspect-[4/3] overflow-hidden">
+          <div className="embla h-full">
+            <div className="embla__viewport h-full" ref={emblaRef}>
+              <div className="embla__container flex h-full">
+                {fotos.map((foto, index) => (
+                  <div
+                    key={foto}
+                    className="embla__slide relative flex-shrink-0 w-full h-full min-w-0 cursor-pointer"
+                    onClick={() => openLightbox(index)}
+                  >
+                    <Image
+                      src={foto}
+                      alt={`${tituloHistoria} - ${categoria} ${index + 1}`}
+                      fill
+                      className="object-cover object-center transition-transform duration-500 group-hover:scale-105"
+                    />
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          <button
+            type="button"
+            onClick={scrollPrev}
+            className="absolute left-2 top-1/2 -translate-y-1/2 z-20 bg-white/90 hover:bg-white text-gray-800 p-2 rounded-full shadow-lg transition-all duration-300 opacity-0 group-hover:opacity-100"
+            aria-label={`Imagen anterior de ${categoria}`}
+          >
+            <FaChevronLeft className="text-sm" />
+          </button>
+
+          <button
+            type="button"
+            onClick={scrollNext}
+            className="absolute right-2 top-1/2 -translate-y-1/2 z-20 bg-white/90 hover:bg-white text-gray-800 p-2 rounded-full shadow-lg transition-all duration-300 opacity-0 group-hover:opacity-100"
+            aria-label={`Siguiente imagen de ${categoria}`}
+          >
+            <FaChevronRight className="text-sm" />
+          </button>
+
+          {fotos.length > 1 && (
+            <div className="absolute bottom-2 left-1/2 -translate-x-1/2 z-20 flex gap-1.5 bg-black/35 px-2 py-1 rounded-full backdrop-blur-sm">
+              {fotos.map((_, index) => (
+                <button
+                  key={`${categoria}-dot-${index}`}
+                  type="button"
+                  onClick={() => scrollTo(index)}
+                  className={`rounded-full transition-all duration-300 ${
+                    selectedIndex === index ? 'w-5 h-1.5 bg-white' : 'w-1.5 h-1.5 bg-white/50 hover:bg-white/80'
+                  }`}
+                  aria-label={`Ir a ${categoria} ${index + 1}`}
+                />
+              ))}
+            </div>
+          )}
+        </div>
+
+        <div className="px-3 py-2 border-t border-gray-100 flex items-center justify-between">
+          <p className="text-sm font-semibold text-gray-800">{categoria}</p>
+          <p className="text-xs text-gray-500">{selectedIndex + 1}/{fotos.length}</p>
+        </div>
+      </article>
+
+      <AnimatePresence>
+        {lightboxOpen && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.25 }}
+            className="fixed inset-0 z-[9999] bg-black/95 backdrop-blur-sm flex items-center justify-center"
+            onClick={closeLightbox}
+          >
+            <button
+              type="button"
+              onClick={(e) => {
+                e.stopPropagation();
+                closeLightbox();
+              }}
+              className="absolute top-6 right-6 z-[10000] bg-white/10 hover:bg-white/20 text-white p-3 rounded-full border border-white/20"
+              aria-label="Cerrar imagen"
+            >
+              <FaTimes className="text-xl" />
+            </button>
+
+            <button
+              type="button"
+              onClick={(e) => {
+                e.stopPropagation();
+                prevLightbox();
+              }}
+              className="absolute left-6 top-1/2 -translate-y-1/2 z-[10000] bg-white/10 hover:bg-white/20 text-white p-3 rounded-full border border-white/20"
+              aria-label="Imagen anterior"
+            >
+              <FaChevronLeft className="text-xl" />
+            </button>
+
+            <button
+              type="button"
+              onClick={(e) => {
+                e.stopPropagation();
+                nextLightbox();
+              }}
+              className="absolute right-6 top-1/2 -translate-y-1/2 z-[10000] bg-white/10 hover:bg-white/20 text-white p-3 rounded-full border border-white/20"
+              aria-label="Siguiente imagen"
+            >
+              <FaChevronRight className="text-xl" />
+            </button>
+
+            <div className="absolute top-6 left-6 z-[10000] bg-white/10 text-white px-3 py-1.5 rounded-full text-sm border border-white/20">
+              {categoria} {lightboxIndex + 1}/{fotos.length}
+            </div>
+
+            <motion.div
+              initial={{ scale: 0.9, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.9, opacity: 0 }}
+              transition={{ duration: 0.25 }}
+              className="relative w-[95vw] h-[85vh]"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <Image
+                src={fotos[lightboxIndex]}
+                alt={`${tituloHistoria} - ${categoria} ${lightboxIndex + 1} ampliada`}
+                fill
+                className="object-contain"
+                priority
+              />
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </>
+  );
 };
 
 const GaleriaPage = () => {
-  const [filtroActivo, setFiltroActivo] = useState('Todos');
-
-  // Obtener categorías únicas
-  const categorias = ['Todos', ...new Set(historiasTrabajos.flatMap(trabajo => trabajo.servicios))];
-
-  // Filtrar trabajos según categoría seleccionada
-  const trabajosFiltrados = filtroActivo === 'Todos' 
-    ? historiasTrabajos 
-    : historiasTrabajos.filter(trabajo => trabajo.servicios.includes(filtroActivo));
-
   return (
     <main className="min-h-screen bg-gray-50">
-      <Navbar /> 
+      <Navbar />
       
       <section id="galeria-historias" className="relative pt-32 pb-20 overflow-hidden">
         <div className="absolute inset-0 pointer-events-none">
@@ -108,101 +282,33 @@ const GaleriaPage = () => {
               Trabajos del Taller
             </h1>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Algunos trabajos recientes para que veas cómo encaramos cada reparación, con criterio y prolijidad.
+              Empezamos a cargar historias reales del taller. Acá va la primera.
             </p>
           </div>
 
-          {/* Sistema de Filtros */}
-          <div className="mb-12">
-            <div className="flex items-center justify-center gap-3 mb-6">
-              <FaFilter className="text-red-600 text-xl" />
-              <h3 className="text-lg font-semibold text-gray-700">Filtrar por servicio:</h3>
+          <motion.article
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            className="bg-white rounded-2xl border border-gray-100 shadow-lg p-6 md:p-8"
+          >
+            <div className="mb-8">
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-2">{historiaActual.titulo}</h2>
+              <p className="text-red-600 font-semibold mb-2">{historiaActual.trabajo}</p>
+              <p className="text-gray-600">{historiaActual.descripcion}</p>
             </div>
-            
-            <div className="flex flex-wrap justify-center gap-3">
-              {categorias.map((categoria) => (
-                <button
-                  key={categoria}
-                  onClick={() => setFiltroActivo(categoria)}
-                  className={`px-6 py-2.5 rounded-full font-medium transition-all duration-300 transform hover:scale-105 ${
-                    filtroActivo === categoria
-                      ? 'bg-red-600 text-white shadow-lg shadow-red-600/30'
-                      : 'bg-white text-gray-700 border border-gray-200 hover:border-red-300 hover:text-red-600'
-                  }`}
-                >
-                  {categoria}
-                </button>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+              {historiaActual.carruseles.map((bloque) => (
+                <CategoryCarousel
+                  key={bloque.categoria}
+                  categoria={bloque.categoria}
+                  fotos={bloque.fotos}
+                  tituloHistoria={historiaActual.titulo}
+                />
               ))}
             </div>
-
-            {/* Contador de resultados */}
-            <p
-              key={filtroActivo}
-              className="text-center mt-4 text-gray-600"
-            >
-              {trabajosFiltrados.length} {trabajosFiltrados.length === 1 ? 'trabajo' : 'trabajos'} 
-              {filtroActivo !== 'Todos' && ` en "${filtroActivo}"`}
-            </p>
-          </div>
-
-          {/* Contenedor de las Historias con Stagger */}
-          <motion.div
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10"
-            variants={containerVariants}
-            initial="hidden"
-            animate="visible"
-            key={filtroActivo}
-            role="list"
-          >
-            {trabajosFiltrados.map((historia) => (
-              <motion.article
-                key={historia.id}
-                variants={itemVariants}
-                className="bg-white rounded-2xl border border-gray-100 shadow-lg overflow-hidden transform hover:-translate-y-1 hover:shadow-2xl transition-all duration-300"
-                role="listitem"
-              >
-                {/* Imagen del Trabajo */}
-                <div className="relative h-60 w-full">
-                  <Image
-                    src={historia.imagenUrl}
-                    alt={historia.titulo}
-                    fill
-                    className="object-cover object-center"
-                  />
-                </div>
-
-                <div className="p-6">
-                  {/* Título y Fecha */}
-                  <h2 className="text-2xl font-bold text-gray-900 mb-2">{historia.titulo}</h2>
-                  <p className="text-sm text-red-600 font-semibold mb-4">{historia.fecha}</p>
-                  
-                  {/* Descripción de la Historia */}
-                  <p className="text-gray-600 mb-4 line-clamp-4">
-                    {historia.descripcion}
-                  </p>
-
-                  {/* Tags de Servicios */}
-                  <div className="flex flex-wrap gap-2 mt-4">
-                    {historia.servicios.map((servicio) => (
-                      <span 
-                        key={servicio}
-                        className="text-xs font-medium bg-red-50 text-red-700 px-3 py-1 rounded-full border border-red-100"
-                      >
-                        {servicio}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-              </motion.article>
-            ))}
-          </motion.div>
-
-          {/* Mensaje si no hay resultados */}
-          {trabajosFiltrados.length === 0 && (
-            <div className="text-center py-16">
-              <p className="text-xl text-gray-500">No hay trabajos en esta categoría todavía.</p>
-            </div>
-          )}
+          </motion.article>
 
           {/* Cierre */}
           <div className="text-center mt-16 bg-white border border-gray-100 rounded-2xl p-8 shadow-md">
