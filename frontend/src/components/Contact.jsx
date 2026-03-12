@@ -15,7 +15,7 @@ const Contact = () => {
   const mapAddress = "Alejandro Aguado 1017, Barrio Talleres Oeste, Córdoba, Argentina";
   const coordinates = "-31.3895,-64.2068"; // Coordenadas aproximadas de Talleres Oeste
   
-  const mapEmbedUrl = `https://maps.google.com/maps?q=${encodeURIComponent(mapAddress)}&t=&z=15&ie=UTF8&iwloc=&output=embed`;
+  const mapEmbedUrl = 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d8953.941843754923!2d-64.1675358277903!3d-31.400203045405934!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9432990078e1b315%3A0x9d01a65866849a3e!2sRuggeri%20Electricidad%20y%20Mecanica!5e0!3m2!1ses!2sar!4v1773274762295!5m2!1ses!2sar';
   
   const sectionVariants = {
     hidden: { opacity: 0, y: 50 },
@@ -147,6 +147,7 @@ const Contact = () => {
                 Zona céntrica de fácil acceso en transporte público o vehículo particular.
               </p>
             </div>
+
           </motion.div>
         </div>
       </div>

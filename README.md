@@ -59,6 +59,21 @@ npm start
 1. Crea la carpeta `public/screenshots/` (si no existe).
 2. Añade `demo.gif` y/o `preview.png` (o cambia los nombres en este README).
 
+## **Reseñas en vivo de Google Maps**
+
+Para que el carrusel de reseñas del contacto se actualice con datos reales, crea `frontend/.env.local` con:
+
+```env
+GOOGLE_MAPS_API_KEY=tu_api_key
+GOOGLE_MAPS_PLACE_ID=tu_place_id
+# opcional si no usas place id fijo:
+# GOOGLE_MAPS_PLACE_QUERY=Ruggeri Electricidad y Mecanica, Córdoba, Argentina
+```
+
+Notas rápidas:
+- La API key debe tener habilitado `Places API (New)` (`places.googleapis.com`).
+- Si no hay variables configuradas, el carrusel muestra una reseña de respaldo.
+
 ## **Contribuir**
 
 Si quieres contribuir, abre un issue o un pull request en el repositorio con una breve descripción de los cambios.

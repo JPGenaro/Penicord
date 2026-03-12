@@ -62,6 +62,13 @@ const Footer = () => {
 
         <div className="border-t border-gray-700/80 mt-10 pt-8 text-center text-gray-400 relative z-10">
           <p>&copy; {currentYear} Ruggeri Taller Mecánico. Todos los derechos reservados.</p>
+          <div className="mt-3 flex flex-wrap items-center justify-center gap-3 text-sm">
+            <a href="/politica-privacidad" className="hover:text-white transition-colors">Política de privacidad</a>
+            <span className="text-gray-600">•</span>
+            <a href="/terminos-y-condiciones" className="hover:text-white transition-colors">Términos y condiciones</a>
+            <span className="text-gray-600">•</span>
+            <a href="/politica-cookies" className="hover:text-white transition-colors">Política de cookies</a>
+          </div>
         </div>
       </div>
     </footer>
