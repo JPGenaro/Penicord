@@ -12,32 +12,38 @@ const Services = () => {
     {
       icon: <FaOilCan className="text-3xl text-red-600" />,
       title: "Cambio de Aceite y Filtros",
-      description: "Servicio completo de cambio de aceite y filtros para cuidar el rendimiento del motor."
+      description: "Servicio completo de cambio de aceite y filtros para cuidar el rendimiento del motor.",
+      image: "/Servicios/servicioAceiteFiltro.webp"
     },
     {
       icon: <FaCarBattery className="text-3xl text-red-600" />,
       title: "Electricidad del Automotor",
-      description: "Reparación e instalación eléctrica para vehículos y camiones, incluyendo arranques y alternadores."
+      description: "Reparación e instalación eléctrica para vehículos y camiones, incluyendo arranques y alternadores.",
+      image: "/Servicios/servicioElectricidad.webp"
     },
     {
       icon: <FaExclamationTriangle className="text-3xl text-red-600" />,
       title: "Sistemas de Frenos",
-      description: "Revisión y reparación completa del sistema de frenos para garantizar tu seguridad."
+      description: "Revisión y reparación completa del sistema de frenos para garantizar tu seguridad.",
+      image: "/Servicios/servicioFrenos.webp"
     },
     {
       icon: <FaTools className="text-3xl text-red-600" />,
       title: "Mecánica General",
-      description: "Mantenimiento preventivo y reparaciones generales para mantener tu vehículo en buenas condiciones."
+      description: "Mantenimiento preventivo y reparaciones generales para mantener tu vehículo en buenas condiciones.",
+      image: "/Servicios/servicioMecanica.webp"
     },
     {
       icon: <FaCog className="text-3xl text-red-600" />,
       title: "Reparación de Motor",
-      description: "Diagnóstico y reparación de motores de distintas marcas y modelos."
+      description: "Diagnóstico y reparación de motores de distintas marcas y modelos.",
+      image: "/Servicios/servicioReparacion.webp"
     },
     {
       icon: <FaCar className="text-3xl text-red-600" />,
       title: "Servicios Electromecánicos",
-      description: "Soluciones para fallas complejas en los sistemas de tu vehículo."
+      description: "Soluciones para fallas complejas en los sistemas de tu vehículo.",
+      image: "/Servicios/servicioElectromecanico.webp"
     }
   ];
 
@@ -92,15 +98,28 @@ const Services = () => {
               key={index} 
               variants={item}
               whileHover={{ y: -6 }}
-              className="group relative bg-white p-8 rounded-2xl border border-gray-100 shadow-md hover:shadow-2xl transition-all duration-300"
+              className="group relative bg-white rounded-2xl border border-gray-100 shadow-md hover:shadow-2xl transition-all duration-300 overflow-hidden"
               role="listitem"
             >
-              <div className="absolute top-0 left-6 right-6 h-1 bg-gradient-to-r from-red-500 to-red-700 rounded-b-full" />
-              <div className="bg-gradient-to-br from-red-50 to-red-100 p-4 rounded-xl inline-block mb-4 group-hover:scale-105 transition-transform duration-300" aria-hidden="true">
-                {service.icon}
+              <div className="absolute top-0 left-6 right-6 h-1 bg-gradient-to-r from-red-500 to-red-700 rounded-b-full z-10" />
+              <div className="p-8 flex flex-col gap-4">
+                <div className="flex items-center gap-4">
+                  <div className="bg-gradient-to-br from-red-50 to-red-100 p-4 rounded-xl shrink-0 group-hover:scale-105 transition-transform duration-300" aria-hidden="true">
+                    {service.icon}
+                  </div>
+                  <h3 className="text-xl font-semibold text-gray-900 leading-snug">{service.title}</h3>
+                </div>
+                {service.image && (
+                  <div className="w-full h-60 overflow-hidden rounded-xl">
+                    <img
+                      src={service.image}
+                      alt={service.title}
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    />
+                  </div>
+                )}
+                <p className="text-gray-600 leading-relaxed">{service.description}</p>
               </div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-3">{service.title}</h3>
-              <p className="text-gray-600 leading-relaxed">{service.description}</p>
             </motion.article>
           ))}
         </motion.div>

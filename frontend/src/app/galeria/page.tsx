@@ -14,7 +14,7 @@ const historiaActual = {
   descripcion: 'El vehículo ingresó por solicitud del cliente para reemplazo de cazoletas delanteras. Se renovó el apoyo superior (goma y chapa), el apoyo inferior de goma y la crapodina ubicada próxima al resorte de suspensión. Para completar el trabajo correctamente fue necesario desajustar el conjunto de suspensión y luego recalibrar el armado final. El resultado fue una suspensión más estable, sin ruidos y con el cliente plenamente conforme.',
   carruseles: [
     {
-      categoria: 'Estado',
+      categoria: 'Estado Inicial',
       fotos: [
         '/Trabajos/FordKa_1_0_2007_N1_juan/CazoletasDelantera/estado1.webp',
         '/Trabajos/FordKa_1_0_2007_N1_juan/CazoletasDelantera/estado2.webp',
@@ -22,7 +22,7 @@ const historiaActual = {
       ],
     },
     {
-      categoria: 'Paso',
+      categoria: 'Pasos',
       fotos: [
         '/Trabajos/FordKa_1_0_2007_N1_juan/CazoletasDelantera/paso1.webp',
         '/Trabajos/FordKa_1_0_2007_N1_juan/CazoletasDelantera/paso2.webp',
