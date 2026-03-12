@@ -1,5 +1,6 @@
 'use client';
 import { useState, useEffect } from 'react';
+import { usePathname } from 'next/navigation';
 import { FaBars, FaTimes, FaWhatsapp, FaTools } from 'react-icons/fa';
 
 /**
@@ -10,8 +11,10 @@ import { FaBars, FaTimes, FaWhatsapp, FaTools } from 'react-icons/fa';
  * @returns {JSX.Element} Barra de navegación fija en la parte superior.
  */
 const Navbar = () => {
+  const pathname = usePathname();
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [activeHref, setActiveHref] = useState('/#inicio');
 
   useEffect(() => {
     const handleScroll = () => {
@@ -30,6 +33,59 @@ const Navbar = () => {
     { href: "/galeria", label: "Galería" },
   ];
 
+  useEffect(() => {
+    if (pathname !== '/') {
+      const routeLink = navLinks.find((link) => !link.href.includes('#') && pathname.startsWith(link.href));
+      setActiveHref(routeLink?.href || '/#inicio');
+      return;
+    }
+
+    const sectionLinks = navLinks.filter((link) => link.href.includes('#'));
+
+    const updateActiveHomeSection = () => {
+      const currentHash = window.location.hash;
+      if (currentHash) {
+        const hashLink = sectionLinks.find((link) => link.href.endsWith(currentHash));
+        if (hashLink) {
+          setActiveHref(hashLink.href);
+          return;
+        }
+      }
+
+      let currentSectionHref = '/#inicio';
+      const currentScroll = window.scrollY + 170;
+
+      for (const link of sectionLinks) {
+        const sectionId = link.href.split('#')[1];
+        const sectionElement = document.getElementById(sectionId);
+        if (!sectionElement) continue;
+
+        if (currentScroll >= sectionElement.offsetTop) {
+          currentSectionHref = link.href;
+        }
+      }
+
+      setActiveHref(currentSectionHref);
+    };
+
+    updateActiveHomeSection();
+    window.addEventListener('scroll', updateActiveHomeSection);
+    window.addEventListener('hashchange', updateActiveHomeSection);
+
+    return () => {
+      window.removeEventListener('scroll', updateActiveHomeSection);
+      window.removeEventListener('hashchange', updateActiveHomeSection);
+    };
+  }, [pathname]);
+
+  const isActiveLink = (href) => {
+    if (href.includes('#')) {
+      return pathname === '/' && activeHref === href;
+    }
+
+    return pathname.startsWith(href);
+  };
+
   return (
     <nav 
       className={`fixed w-full z-50 transition-all duration-500 ${
@@ -45,14 +101,8 @@ const Navbar = () => {
             href="/" 
             className="flex items-center gap-3 group relative"
           >
-            <div className="relative">
-              {/* Glow effect */}
-              <div className="absolute inset-0 bg-gradient-to-r from-red-600 to-red-500 rounded-xl blur-md opacity-0 group-hover:opacity-70 transition-opacity duration-300"></div>
-              
-              {/* Logo container */}
-              <div className="relative bg-gradient-to-br from-red-600 to-red-700 text-white p-2.5 rounded-xl shadow-lg group-hover:scale-110 transition-all duration-300">
-                <FaTools className="text-xl" />
-              </div>
+            <div className="relative bg-gradient-to-br from-red-600 to-red-700 text-white p-2.5 rounded-xl shadow-lg group-hover:scale-110 transition-all duration-300">
+              <FaTools className="text-xl" />
             </div>
             
             <div className="flex flex-col">
@@ -69,13 +119,21 @@ const Navbar = () => {
               <a
                 key={index}
                 href={link.href}
-                className="relative px-4 py-2 text-gray-700 font-medium transition-all duration-300 hover:text-red-600 group"
+                onClick={() => setActiveHref(link.href)}
+                className={`relative px-4 py-2 font-medium transition-all duration-300 group rounded-lg ${
+                  isActiveLink(link.href)
+                    ? 'text-red-700 bg-red-50'
+                    : 'text-gray-700 hover:text-red-600'
+                }`}
               >
                 <span className="relative z-10">{link.label}</span>
                 {/* Hover effect */}
-                <span className="absolute inset-0 bg-red-50 rounded-lg scale-0 group-hover:scale-100 transition-transform duration-300 origin-center"></span>
+                <span className={`absolute inset-0 bg-red-50 rounded-lg transition-transform duration-300 origin-center ${isActiveLink(link.href) ? 'scale-100' : 'scale-0 group-hover:scale-100'}`}></span>
                 {/* Active indicator */}
-                <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-0.5 bg-gradient-to-r from-red-600 to-red-500 group-hover:w-3/4 transition-all duration-300"></span>
+                <span className={`absolute bottom-0 left-1/2 -translate-x-1/2 h-0.5 bg-gradient-to-r from-red-600 to-red-500 transition-all duration-300 ${isActiveLink(link.href) ? 'w-3/4' : 'w-0 group-hover:w-3/4'}`}></span>
+                {isActiveLink(link.href) && (
+                  <span className="absolute -top-1 -right-1 w-2 h-2 rounded-full bg-red-600"></span>
+                )}
               </a>
             ))}
             

@@ -1,6 +1,5 @@
-import { FaTools } from 'react-icons/fa';
-
 const Footer = () => {
+  const logoVersion = '20260311-2';
   const currentYear = new Date().getFullYear();
 
   return (
@@ -15,9 +14,15 @@ const Footer = () => {
           {/* Brand */}
           <div className="text-center md:text-left">
             <div className="flex items-center mb-4 justify-center md:justify-start">
-              <div className="bg-gradient-to-br from-red-600 to-red-700 text-white p-2.5 rounded-lg mr-3 shadow-lg shadow-red-900/30">
-                <FaTools className="text-2xl" />
-              </div>
+              <img
+                src={`/logo_ruggeri.webp?v=${logoVersion}`}
+                alt="Logo Ruggeri"
+                width="186"
+                height="55"
+                className="block h-10 md:h-11 w-auto object-contain mr-3 [filter:contrast(1.08)_saturate(1.05)]"
+                loading="eager"
+                decoding="sync"
+              />
               <span className="text-2xl font-bold">RUGGERI</span>
             </div>
             <p className="text-gray-300 leading-relaxed">
